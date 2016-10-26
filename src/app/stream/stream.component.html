@@ -1,3 +1,60 @@
-<p>
-  stream works!
-</p>
+<div class="row" style="padding-bottom:10px;">
+  <div class="col-sm-6">
+    <div class="media">
+      <div class="media-left">
+        <img style="max-height: 140px;margin-left:2px;" class="media-object" max-width="20%">
+      </div>
+      <div class="media-body">
+        <h5 class="text-muted"><small>Most Played Today</small></h5>
+        <h4>title</h4>
+        <ul class="list-inline">
+          <li><small>artists</small></li>
+        </ul>
+        <!-- <bpm-links song="vm.mostHeard"></bpm-links> -->
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="text-xs-center card">
+          <div class="card-block">
+            <h2></h2>
+            <p class="card-text"><small>songs last 24 hours</small></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-6">
+        <div class="text-xs-center card">
+          <div class="card-block">
+            <h2></h2>
+            <p class="card-text"><small>unique songs last 24 hours</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4 col-lg-3" *ngFor="let stream of recent" style="margin-bottom:30px">
+    <div class="card" style="height:100%;">
+      <img class="card-img-top" width="100%" src="{{stream.cover || '/assets/img/album_placeholder.jpg'}}">
+      <div class="card-block">
+        <p class="card-text">
+          <small class="text-muted">
+            <time-since [date]="stream.startTime"></time-since>
+          </small>
+        </p>
+        <h6 class="card-title">{{stream.name}}</h6>
+        <ul class="list-inline">
+          <li class="list-inline-item" *ngFor="let artist of stream.artists">
+            <a href="#/artist/{{artist}}">
+              <small>{{artist}}</small>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

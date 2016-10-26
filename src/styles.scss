@@ -1,1 +1,7 @@
+$enable-flex: true;
+@import 'node_modules/bootstrap/scss/_variables';
 @import 'node_modules/bootstrap/scss/bootstrap';
+
+nav {
+  margin-bottom: 20px;
+}

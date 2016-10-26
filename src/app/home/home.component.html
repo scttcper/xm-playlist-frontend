@@ -1,1 +1,17 @@
-home
+<div class="row">
+  <div class="col-md-4 col-lg-3" *ngFor="let channel of channels">
+    <a class="card" [routerLink]="['station', channel.name]">
+      <img class="card-img-top" width="100%" src="{{'http://www.siriusxm.com/albumart/Live/Default/DefaultMDS_m_' + channel.number + '.jpg'}}">
+      <div class="card-block">
+        <h5 class="card-title">{{channel.name}}</h5>
+      </div>
+    </a>
+  </div>
+  <div class="col-md-4 col-lg-3">
+    <div class="card">
+      <div class="card-block">
+        <h5 class="card-title">More Coming Soon...</h5>
+      </div>
+    </div>
+  </div>
+</div>

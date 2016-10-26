@@ -1,6 +1,5 @@
-export class Channel {
-  constructor(
-    public name: string,
-    public id: string
-  ) { }
+export interface Channel {
+  id: string;
+  name: string;
+  number: number;
 }

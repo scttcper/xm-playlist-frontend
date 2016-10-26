@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
-import { Headers, RequestOptions } from '@angular/http';
-import { Channel } from './channel';
+
 import { environment } from '../environments/environment';
+import { Channel } from './channel';
+import { Stream } from './stream';
 
 @Injectable()
 export class Api {
@@ -11,6 +12,13 @@ export class Api {
 
   getChannels(): Promise<Channel[]> {
     return this.http.get(`${environment.api}/channels`)
+      .toPromise()
+      .then(res => res.json())
+      .catch(this.handleError);
+  }
+
+  getRecent(channelName: string): Promise<Stream[]> {
+    return this.http.get(`${environment.api}/recent/${channelName}`)
       .toPromise()
       .then(res => res.json())
       .catch(this.handleError);
