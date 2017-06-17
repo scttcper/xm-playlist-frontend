@@ -6,16 +6,16 @@ import { Observable } from 'rxjs/Observable';
 import * as _ from 'lodash';
 
 import { Api } from '../api';
-import { Channel, Stream } from '../app.interfaces';
+import { Channel, Play } from '../app.interfaces';
 
 @Component({
-  selector: 'app-stream',
+  selector: 'xm-stream',
   templateUrl: './stream.component.html',
 })
 export class StreamComponent implements OnInit, OnDestroy {
   channels: Observable<Channel[]>;
-  streams: Stream[][];
-  mostHeard: Stream;
+  streams: Play[][];
+  mostHeard: Play;
   mostTimesHeard: number;
   unique: number;
   total: number;
@@ -23,7 +23,7 @@ export class StreamComponent implements OnInit, OnDestroy {
   private sub: Subscription;
   private page = 0;
   private loading = false;
-  private lastLoaded: Stream;
+  private lastLoaded: Play;
   private oldChannel = '';
 
   constructor(

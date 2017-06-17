@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 
 import { environment } from '../environments/environment';
-import { Channel, Stream, Spotify, Track } from './app.interfaces';
+import { Channel, Play, Spotify, Track } from './app.interfaces';
 
 @Injectable()
 export class Api {
@@ -28,10 +28,10 @@ export class Api {
     return this.channelCache;
   }
 
-  getRecent(channelName: string, last?: Stream): Observable<Stream[]> {
+  getRecent(channelName: string, last?: Play): Observable<Play[]> {
     const search = new URLSearchParams();
     if (last) {
-      search.set('last', String(new Date(last.startTime).getTime()));
+      search.set('last', String(last.id));
     }
     return this.http
       .get(`${this.url}/recent/${channelName}`, { search })
@@ -39,9 +39,9 @@ export class Api {
       .catch(this.handleError);
   }
 
-  getTrack(songId: string): Observable<Track> {
+  getTrack(trackId: number): Observable<Track> {
     return this.http
-      .get(`${this.url}/track/${songId}`)
+      .get(`${this.url}/track/${trackId}`)
       .map(res => res.json())
       .catch(this.handleError);
   }
@@ -53,13 +53,10 @@ export class Api {
       .catch(this.handleError);
   }
 
-  getSpotify(songId: string): Observable<Spotify> {
-    if (!songId) {
-      return;
-    }
-    if (!this.spotifyCache[songId]) {
-      this.spotifyCache[songId] = this.http
-        .get(`${this.url}/spotify/${encodeURIComponent(songId)}`)
+  getSpotify(trackId: number): Observable<Spotify> {
+    if (!this.spotifyCache[trackId]) {
+      this.spotifyCache[trackId] = this.http
+        .get(`${this.url}/spotify/${trackId}`)
         .map(res => res.json())
         .catch(() => {
           return Observable.of(null);
@@ -67,7 +64,7 @@ export class Api {
         .publishReplay()
         .refCount();
     }
-    return this.spotifyCache[songId];
+    return this.spotifyCache[trackId];
   }
 
   private handleError (error: Response | any) {

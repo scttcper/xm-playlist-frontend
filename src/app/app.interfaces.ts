@@ -4,30 +4,43 @@ export interface Channel {
   number: number;
 }
 
-export interface Stream {
-  _id: string;
-  channelId: string;
-  name: string;
-  artists: string[];
-  artistsId: string;
-  startTime: Date;
-  songId: string;
+export interface Play {
+  id: number;
+  trackId: string;
+  startTime?: Date;
+  channel?: number;
+  track: Track;
 }
 
 export interface Spotify {
-  cover: string;
-  spotifyId: string;
-  name: string;
-  duration_ms: number;
-  url: string;
-  songId: string;
+  id: number;
+  trackId?: number;
+  cover?: string;
+  url?: string;
+  spotifyId?: string;
+  spotifyName?: string;
+  durationMs?: number;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 export interface Track {
-  firstHeard: Date;
-  lastHeard: Date;
-  artists: string;
-  artistsId: string;
-  name: string;
+  id: number;
   songId: string;
+  name: string;
+  plays?: number;
+  artists?: Artist[];
+  createdAt?: Date;
+  updatedAt?: Date;
+}
+
+export interface Artist {
+  id?: number;
+  name?: string;
+  artist_track: ArtistTrack;
+}
+
+export interface ArtistTrack {
+  trackId: string;
+  artistId: number;
 }

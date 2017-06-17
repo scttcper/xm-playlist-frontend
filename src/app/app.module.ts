@@ -20,7 +20,7 @@ import { ArtistComponent } from './artist/artist.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'station/:channelName', component: StreamComponent },
-  { path: 'track/:songId', component: TrackComponent },
+  { path: 'track/:trackId', component: TrackComponent },
   { path: 'artist/:artist', component: ArtistComponent },
   {
     path: '**',

@@ -1,13 +1,13 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { Api } from '../api';
-import { Stream } from '../app.interfaces';
+import { Play } from '../app.interfaces';
 
 @Component({
   selector: 'xm-links',
   template: `
   <div class="links m-2 text-center">
-    <a [routerLink]="['/track', stream.songId]" *ngIf="!hideTrack" class="btn btn-secondary info" role="button">
+    <a [routerLink]="['/track', trackId]" *ngIf="!hideTrack" class="btn btn-secondary info" role="button">
       <i class="fa fa-info-circle"></i>
     </a>
     <a [href]="hypem" target="_blank" class="btn btn-secondary hypem" role="button">
@@ -37,19 +37,22 @@ import { Stream } from '../app.interfaces';
   `]
 })
 export class LinksComponent implements OnInit {
-  @Input() stream: Stream;
+  @Input() trackId: number;
+  @Input() name: string;
+  @Input() artists: any[];
   @Input() hideTrack: boolean;
-  youtube: string;
-  hypem: string;
-  spotify: string;
+  youtube = '';
+  hypem = '';
+  spotify = '';
 
   constructor(private api: Api) { }
 
   ngOnInit() {
-    const str = this.stream.name.replace(/[\s\/()]/g, '+') + '+' + this.stream.artists.join('+').replace(/[\s\/()]/g, '+');
+    const artists = this.artists.map(n => n.name);
+    const str = this.name.replace(/[\s\/()]/g, '+') + '+' + artists.join('+').replace(/[\s\/()]/g, '+');
     this.hypem = `http://hypem.com/search/${str}/1/?sortby=favorite`;
     this.youtube = `https://www.youtube.com/results?search_query=${str}`;
-    this.api.getSpotify(this.stream.songId).subscribe((spotify) => {
+    this.api.getSpotify(this.trackId).subscribe((spotify) => {
       if (!spotify) {
         return;
       }

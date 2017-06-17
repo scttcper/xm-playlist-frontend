@@ -23,11 +23,11 @@ export class TrackComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.sub = this.route.params.subscribe((params: Params) => {
-      // get segment id from route
-      const songId = params['songId'];
-      this.api.getTrack(songId).subscribe((track) => {
-        this.track = track;
-      });
+      this.api
+        .getTrack(+params['trackId'])
+        .subscribe((track) => {
+          this.track = track;
+        });
     });
   }
   ngOnDestroy() {

@@ -1,25 +1,29 @@
 <div class="row justify-content-center" *ngIf="track">
-  <div class="col-sm-12 col-md-6">
+  <div class="col-sm-12 col-md-8 col-sm-6">
     <div class="card">
-      <xm-coverart [songId]="track.songId"></xm-coverart>
+      <xm-coverart [trackId]="track.id"></xm-coverart>
       <div class="card-block">
         <h4 class="card-title">{{track.name}}</h4>
-        <a href="#" class="card-link" *ngFor="let artist of track.artists">{{ artist }}</a>
+        <a [routerLink]="['/artist', artist.id]" class="card-link" *ngFor="let artist of track.artists">
+          {{ artist.name }}
+        </a>
       </div>
       <ul class="list-group list-group-flush">
         <li class="list-group-item">
           <p class="m-0">First Heard -
-            <xm-time-since [date]="track.firstHeard"></xm-time-since>
+            <xm-time-since [date]="track.createdAt"></xm-time-since>
           </p>
         </li>
         <li class="list-group-item">
           <p class="m-0">Last Heard -
-            <xm-time-since [date]="track.lastHeard"></xm-time-since>
+            <xm-time-since [date]="track.updatedAt"></xm-time-since>
           </p>
         </li>
       </ul>
       <div>
-        <xm-links [hideTrack]="true" [stream]="track"></xm-links>
+        <xm-links [hideTrack]="true" [name]="track.name"
+          [artists]="track.artists" [trackId]="track.id">
+        </xm-links>
       </div>
       <div id="plays" style="margin-bottom: -6px"></div>
     </div>

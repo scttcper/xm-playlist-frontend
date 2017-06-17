@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-4 col-lg-3 mb-3" *ngFor="let channel of channels | async">
+  <div class="col-sm-6 col-md-4 col-lg-3 mb-3" *ngFor="let channel of channels | async">
     <div class="card" [routerLink]="['station', channel.name]">
       <a [routerLink]="['/station', channel.name]">
         <img width="100%" class="card-img-top img-fluid" [alt]="channel.name" [src]="channel.img">
