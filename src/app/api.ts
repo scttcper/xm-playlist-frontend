@@ -31,7 +31,7 @@ export class Api {
   getRecent(channelName: string, last?: Play): Observable<Play[]> {
     const search = new URLSearchParams();
     if (last) {
-      search.set('last', String(last.id));
+      search.set('last', String(new Date(last.startTime).getTime()));
     }
     return this.http
       .get(`${this.url}/recent/${channelName}`, { search })
