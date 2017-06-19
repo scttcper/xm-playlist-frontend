@@ -19,6 +19,7 @@ export class StreamComponent implements OnInit, OnDestroy {
   mostTimesHeard: number;
   unique: number;
   total: number;
+  end = false;
 
   private sub: Subscription;
   private page = 0;
@@ -36,6 +37,7 @@ export class StreamComponent implements OnInit, OnDestroy {
     this.channels = this.api.getChannels();
     this.sub = this.route.params.subscribe((params: Params) => {
       // get segment id from route
+      this.end = false;
       const channelName = params['channelName'];
       if (channelName !== this.oldChannel) {
         this.streams = [];
@@ -54,16 +56,21 @@ export class StreamComponent implements OnInit, OnDestroy {
     this.sub.unsubscribe();
   }
   getRecentPage() {
-    if (this.loading) {
+    if (this.loading || this.end) {
       return;
     }
     this.loading = true;
     const channel = this.api.currentChannel.getValue();
-    this.api.getRecent(channel, this.lastLoaded).subscribe((recent) => {
-      this.streams.push(recent);
-      this.lastLoaded = _.last(recent);
-      this.loading = false;
-    });
+    this.api
+      .getRecent(channel, this.lastLoaded)
+      .subscribe((recent) => {
+        this.streams.push(recent);
+        if (recent.length === 0) {
+          this.end = true;
+        }
+        this.lastLoaded = _.last(recent);
+        this.loading = false;
+      });
   }
   onScroll() {
     this.page = this.page + 1;

@@ -8,6 +8,12 @@ import { Channel } from '../app.interfaces';
 @Component({
   selector: 'xm-nav',
   templateUrl: './nav.component.html',
+  styles: [`
+    .dropdown-menu {
+      max-height: 400px;
+      overflow-x: scroll;
+    }
+  `],
 })
 export class NavComponent implements OnInit, OnDestroy {
   isCollapsed = true;

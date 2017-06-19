@@ -1,11 +1,21 @@
 <div class="row">
-  <div class="col-sm-6 col-md-4 col-lg-3 mb-3" *ngFor="let channel of channels | async">
-    <div class="card" [routerLink]="['station', channel.name]">
+  <div class="col-12">
+    <h6>Filter:</h6>
+  </div>
+  <div class="col-12 justify-content-between d-flex">
+    <button class="btn btn-secondary" *ngFor="let genre of genres" (click)="setGenre(genre)" [class.btn-info]="curGenre === genre">
+      {{ genre }}
+    </button>
+  </div>
+</div>
+<div class="row mt-3">
+  <div class="col-sm-6 col-md-4 col-lg-2 mb-3" *ngFor="let channel of channels">
+    <div class="card h-100" [routerLink]="['station', channel.name]">
       <a [routerLink]="['/station', channel.name]">
-        <img width="100%" class="card-img-top img-fluid" [alt]="channel.name" [src]="channel.img">
+        <img width="100%" class="card-img-top img-fluid p-3" [alt]="channel.name" [src]="channel.img">
       </a>
-      <div class="card-block">
-        <h5 class="card-title">{{channel.name}}</h5>
+      <div class="card-block p-2">
+        <h6 class="card-title">{{channel.name}}</h6>
       </div>
     </div>
   </div>

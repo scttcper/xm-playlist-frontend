@@ -2,6 +2,9 @@ export interface Channel {
   id: string;
   name: string;
   number: number;
+  genre: string;
+  desc: string;
+  img: string;
 }
 
 export interface Play {
