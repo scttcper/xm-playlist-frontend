@@ -21,7 +21,7 @@
 .card {
   cursor: pointer;
 }
-.card img {
+.card-img-top {
   background: #181818;
   @include filter(grayscale, 100%);
 }

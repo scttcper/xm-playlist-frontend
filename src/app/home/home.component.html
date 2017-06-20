@@ -2,18 +2,22 @@
   <div class="col-12">
     <h6>Filter:</h6>
   </div>
-  <div class="col-12 justify-content-between d-flex">
-    <button class="btn btn-secondary" *ngFor="let genre of genres"
-      (click)="setGenre(genre)" [class.active]="curGenre === genre" role="button" type="button">
-      {{ genre }}
-    </button>
+  <div class="col-12">
+    <div class="justify-content-between">
+      <div class="d-inline" *ngFor="let genre of genres">
+        <button class="btn btn-secondary mb-2"
+          (click)="setGenre(genre)" [class.active]="curGenre === genre" role="button" type="button">
+          {{ genre }}
+        </button>
+      </div>
+    </div>
   </div>
 </div>
-<div class="row mt-3">
+<div class="row mt-2">
   <div class="col-sm-6 col-md-4 col-lg-2 mb-3" *ngFor="let channel of channels">
     <div class="card h-100 text-center" [routerLink]="['station', channel.id]">
-      <a [routerLink]="['/station', channel.id]">
-        <img width="100%" class="card-img-top img-fluid p-3" [alt]="channel.name" [src]="channel.img">
+      <a class="card-img-top" [routerLink]="['/station', channel.id]">
+        <img width="100%" class="card-img-top img-fluid p-3" [alt]="channel.name" [src]="'/assets/img/' + channel.id + '.png'">
       </a>
       <div class="card-block p-2">
         <p>{{ channel.number }} - {{ channel.name }}</p>

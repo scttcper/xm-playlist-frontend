@@ -1,13 +1,13 @@
 <div class="row">
   <div class="col-md-6 col-sm-12 pb-5">
     <div class="media">
-      <!-- <div class="media-left" style="max-width:30%" *ngIf="xm-coverart"> -->
-        <!-- <xm-coverart [songId]="mostHeard.songId"></xm-coverart> -->
-      <!-- </div> -->
+      <div class="media-left" style="max-width:30%" *ngIf="xm-coverart">
+        <xm-coverart [trackId]="mostHeard.trackId"></xm-coverart>
+      </div>
       <div class="media-body pb-3 ml-3">
-        <!-- <h5 class="text-muted"><small>Most Played Today</small></h5> -->
-        <!-- <h4>{{ mostHeard?.name }}</h4> -->
-        <!-- <a [routerLink]="['/artist', artist]" class="card-link" *ngFor="let artist of mostHeard?.artists">{{ artist }}</a> -->
+        <h5 class="text-muted"><small>Most Played Today</small></h5>
+        <h4>{{ mostHeard?.name }}</h4>
+        <a [routerLink]="['/artist', artist]" class="card-link" *ngFor="let artist of mostHeard?.artists">{{ artist }}</a>
       </div>
     </div>
   </div>
@@ -45,7 +45,7 @@
             </small>
           </p>
           <h5 class="card-title">{{ play.track.name }}</h5>
-          <a [routerLink]="['/artist', artist]" class="card-link" *ngFor="let artist of play.track.artists">
+          <a [routerLink]="['/artist', artist]" class="mr-2" *ngFor="let artist of play.track.artists">
             {{ artist.name }}
           </a>
         </div>
