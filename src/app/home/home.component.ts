@@ -8,7 +8,7 @@ import { Channel } from '../app.interfaces';
 @Component({
   selector: 'xm-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
   allChannels: Channel[];

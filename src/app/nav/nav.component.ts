@@ -13,6 +13,12 @@ import { Channel } from '../app.interfaces';
       max-height: 400px;
       overflow-x: scroll;
     }
+    .navbar {
+      background: #181818;
+    }
+    .navbar-brand {
+      font-family: "Times New Roman", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
   `],
 })
 export class NavComponent implements OnInit, OnDestroy {

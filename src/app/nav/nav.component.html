@@ -1,4 +1,4 @@
-<nav class="navbar navbar-light bg-faded navbar-toggleable-sm">
+<nav class="navbar navbar-inverse navbar-toggleable-sm">
   <button class="navbar-toggler navbar-toggler-right" (click)="isCollapsed = !isCollapsed">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -11,8 +11,8 @@
             Stations
           </a>
           <div class="dropdown-menu">
-            <a *ngFor="let channel of channels | async" class="dropdown-item" [routerLink]="['/station', channel.name]">
-              {{ channel.name }}
+            <a *ngFor="let channel of channels | async" class="dropdown-item" [routerLink]="['/station', channel.id]">
+              {{ channel.number }} - {{ channel.name }}
             </a>
           </div>
         </li>

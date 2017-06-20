@@ -3,19 +3,20 @@
     <h6>Filter:</h6>
   </div>
   <div class="col-12 justify-content-between d-flex">
-    <button class="btn btn-secondary" *ngFor="let genre of genres" (click)="setGenre(genre)" [class.btn-info]="curGenre === genre">
+    <button class="btn btn-secondary" *ngFor="let genre of genres"
+      (click)="setGenre(genre)" [class.active]="curGenre === genre" role="button" type="button">
       {{ genre }}
     </button>
   </div>
 </div>
 <div class="row mt-3">
   <div class="col-sm-6 col-md-4 col-lg-2 mb-3" *ngFor="let channel of channels">
-    <div class="card h-100" [routerLink]="['station', channel.name]">
-      <a [routerLink]="['/station', channel.name]">
+    <div class="card h-100 text-center" [routerLink]="['station', channel.id]">
+      <a [routerLink]="['/station', channel.id]">
         <img width="100%" class="card-img-top img-fluid p-3" [alt]="channel.name" [src]="channel.img">
       </a>
       <div class="card-block p-2">
-        <h6 class="card-title">{{channel.name}}</h6>
+        <p>{{ channel.number }} - {{ channel.name }}</p>
       </div>
     </div>
   </div>

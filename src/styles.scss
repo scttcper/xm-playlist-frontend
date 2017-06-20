@@ -53,3 +53,14 @@ nav {
 .card-link:hover {
   text-decoration: underline;
 }
+.btn-secondary {
+  border-radius: 20px;
+  border-color: #181818;
+}
+.btn-secondary:hover {
+  border-color: #181818;
+}
+.btn-secondary.active {
+  background: mediumspringgreen;
+  border-color: #181818;
+}
