@@ -6,7 +6,7 @@ import { Play } from '../app.interfaces';
 @Component({
   selector: 'xm-links',
   template: `
-  <div class="links m-2 text-center">
+  <div class="links m-2">
     <a [routerLink]="['/track', trackId]" *ngIf="!hideTrack" class="btn btn-secondary info" role="button">
       <i class="fa fa-info-circle"></i>
     </a>

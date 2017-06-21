@@ -45,11 +45,11 @@ export class StreamComponent implements OnInit, OnDestroy {
       }
       this.api.currentChannel.next(channelName);
       this.getRecentPage();
-      // this.api.mostHeard(channelName).subscribe((res) => {
-      //   this.unique = res.length;
-      //   this.total = _.sumBy(res, 'count');
-      //   this.mostHeard = res[0];
-      // });
+      this.api.mostHeard(channelName).subscribe((res) => {
+        this.unique = res.length;
+        this.total = _.sumBy(res, 'playCount');
+        this.mostHeard = res[0];
+      });
     });
   }
   ngOnDestroy() {

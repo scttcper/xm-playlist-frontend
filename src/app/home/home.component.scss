@@ -19,9 +19,23 @@
 }
 
 .card {
+  background: #181818;
   cursor: pointer;
 }
 .card-img-top {
-  background: #181818;
   @include filter(grayscale, 100%);
+}
+
+.card-block {
+  background: #ffffff;
+  border-radius: .2rem;
+}
+
+
+.jumbotron {
+  background: #181818;
+  color: #ffffff;
+}
+.display-3 {
+  font-family: "Times New Roman", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
