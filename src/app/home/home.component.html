@@ -1,29 +1,31 @@
-<div class="jumbotron">
-  <h1 class="display-3">xmplaylist</h1>
-  <p class="lead">Recently played songs on your favorite xm music radio stations.</p>
-</div>
-
-<div class="row">
-  <div class="col-12 text-center">
-    <h6>Filter:</h6>
+<div class="container">
+  <div class="jumbotron">
+    <h1 class="display-3">xmplaylist</h1>
+    <p class="lead">Recently played songs on your favorite xm music radio stations.</p>
   </div>
-  <div class="col-12 text-center">
-    <div class="d-inline" *ngFor="let genre of genres">
-      <button class="btn btn-secondary mb-2"
-        (click)="setGenre(genre)" [class.active]="curGenre === genre" role="button" type="button">
-        {{ genre }}
-      </button>
+
+  <div class="row">
+    <div class="col-12 text-center">
+      <h6>Filter:</h6>
+    </div>
+    <div class="col-12 text-center">
+      <div class="d-inline" *ngFor="let genre of genres">
+        <button class="btn btn-secondary mb-2"
+          (click)="setGenre(genre)" [class.active]="curGenre === genre" role="button" type="button">
+          {{ genre }}
+        </button>
+      </div>
     </div>
   </div>
-</div>
-<div class="row mt-2 justify-content-center">
-  <div class="col-sm-6 col-md-4 col-lg-2 mb-3" *ngFor="let channel of channels">
-    <div class="card h-100 text-center" [routerLink]="['station', channel.id]">
-      <a [routerLink]="['/station', channel.id]">
-        <img width="100%" class="card-img-top img-fluid p-3" [alt]="channel.name" [src]="'/assets/img/' + channel.id + '.png'">
-      </a>
-      <div class="card-block p-2">
-        <p class="pb-0">{{ channel.number }} - {{ channel.name }}</p>
+  <div class="row mt-2 justify-content-center">
+    <div class="col-sm-6 col-md-4 col-lg-2 mb-3" *ngFor="let channel of channels">
+      <div class="card h-100 text-center" [routerLink]="['station', channel.id]">
+        <a [routerLink]="['/station', channel.id]">
+          <img width="100%" class="card-img-top img-fluid p-3" [alt]="channel.name" [src]="'/assets/img/' + channel.id + '.png'">
+        </a>
+        <div class="card-block p-2">
+          <p class="pb-0">{{ channel.number }} - {{ channel.name }}</p>
+        </div>
       </div>
     </div>
   </div>

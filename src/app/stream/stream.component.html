@@ -1,67 +1,69 @@
-<div class="row" *ngIf="mostHeard">
-  <div class="col-md-6 col-sm-12 pb-5">
-    <div class="media">
-      <div class="media-left" style="max-width:30%">
-        <xm-coverart [trackId]="mostHeard.id"></xm-coverart>
-      </div>
-      <div class="media-body pb-3 ml-3">
-        <h5 class="text-muted"><small>Most Played Today</small></h5>
-        <h4>{{ mostHeard.name }}</h4>
-        <a [routerLink]="['/artist', artist.name]" class="card-link" *ngFor="let artist of mostHeard.artists">
-          {{ artist.name }}
-        </a>
-        <div style="margin-left: -20px">
-          <xm-links [name]="mostHeard.name"
-            [artists]="mostHeard.artists" [trackId]="mostHeard.id">
-          </xm-links>
+<div class="container">
+  <div class="row" *ngIf="mostHeard">
+    <div class="col-md-6 col-sm-12 pb-5">
+      <div class="media">
+        <div class="media-left" style="max-width:30%">
+          <xm-coverart [trackId]="mostHeard.id"></xm-coverart>
         </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-6 col-sm-12">
-    <div class="row">
-      <div class="col">
-        <div class="text-center card-block">
-          <h2>{{ total }}</h2>
-          <p class="card-text">
-            <small>songs last 24 hours</small>
-          </p>
-        </div>
-      </div>
-      <div class="col">
-        <div class="text-center card-block">
-          <h2>{{ unique }}</h2>
-          <p class="card-text">
-            <small>unique songs last 24 hours</small>
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="row" infinite-scroll (scrolled)="onScroll()">
-  <ng-template ngFor let-stream [ngForOf]="streams">
-    <div class="col-sm-6 col-lg-4 col-xl-3" *ngFor="let play of stream" style="margin-bottom:30px">
-      <div class="card h-100">
-        <xm-coverart [trackId]="play.trackId"></xm-coverart>
-        <div class="card-block">
-          <p class="card-text">
-            <small class="text-muted">
-              <xm-time-since [date]="play.startTime"></xm-time-since>
-            </small>
-          </p>
-          <h5 class="card-title">{{ play.track.name }}</h5>
-          <a [routerLink]="['/artist', artist]" class="mr-2" *ngFor="let artist of play.track.artists">
+        <div class="media-body pb-3 ml-3">
+          <h5 class="text-muted"><small>Most Played Today</small></h5>
+          <h4>{{ mostHeard.name }}</h4>
+          <a [routerLink]="['/artist', artist.name]" class="card-link" *ngFor="let artist of mostHeard.artists">
             {{ artist.name }}
           </a>
-        </div>
-        <div>
-          <xm-links class="text-center" [name]="play.track.name"
-            [artists]="play.track.artists" [trackId]="play.track.id">
-          </xm-links>
+          <div style="margin-left: -20px">
+            <xm-links [name]="mostHeard.name"
+              [artists]="mostHeard.artists" [trackId]="mostHeard.id">
+            </xm-links>
+          </div>
         </div>
       </div>
     </div>
-  </ng-template>
+    <div class="col-md-6 col-sm-12">
+      <div class="row">
+        <div class="col">
+          <div class="text-center card-block">
+            <h2>{{ total }}</h2>
+            <p class="card-text">
+              <small>songs last 24 hours</small>
+            </p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="text-center card-block">
+            <h2>{{ unique }}</h2>
+            <p class="card-text">
+              <small>unique songs last 24 hours</small>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" infinite-scroll (scrolled)="onScroll()">
+    <ng-template ngFor let-stream [ngForOf]="streams">
+      <div class="col-sm-6 col-lg-4 col-xl-3" *ngFor="let play of stream" style="margin-bottom:30px">
+        <div class="card h-100">
+          <xm-coverart [trackId]="play.trackId"></xm-coverart>
+          <div class="card-block">
+            <p class="card-text">
+              <small class="text-muted">
+                <xm-time-since [date]="play.startTime"></xm-time-since>
+              </small>
+            </p>
+            <h5 class="card-title">{{ play.track.name }}</h5>
+            <a [routerLink]="['/artist', artist]" class="mr-2" *ngFor="let artist of play.track.artists">
+              {{ artist.name }}
+            </a>
+          </div>
+          <div>
+            <xm-links class="text-center" [name]="play.track.name"
+              [artists]="play.track.artists" [trackId]="play.track.id">
+            </xm-links>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
 </div>
