@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { Routes, RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { InfiniteScrollModule } from 'angular2-infinite-scroll';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import { AppComponent } from './app.component';
 import { StreamComponent } from './stream/stream.component';
