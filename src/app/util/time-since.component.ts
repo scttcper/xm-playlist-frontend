@@ -1,5 +1,5 @@
 import { Component, OnDestroy, Input, OnChanges } from '@angular/core';
-import * as distanceInWordsStrict from 'date-fns/distance_in_words_strict';
+import * as formatDistance from 'date-fns/formatDistance';
 
 @Component({
   selector: 'xm-time-since',
@@ -29,7 +29,7 @@ export class TimeSinceComponent implements OnDestroy, OnChanges {
     this.timeout = setTimeout(() => this.format(), next);
   }
   format() {
-    const res = distanceInWordsStrict(new Date(), this.past);
+    const res = formatDistance(new Date(), this.past);
     if (res.indexOf('ms') !== -1 || res.indexOf('second') !== -1) {
       this.timeSince = '1 minute';
     } else {
