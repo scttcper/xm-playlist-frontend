@@ -27,6 +27,11 @@ export interface Spotify {
   updatedAt?: Date;
 }
 
+export interface PlaysByDay {
+  day: string;
+  count: string;
+}
+
 export interface Track {
   id: number;
   songId: string;
@@ -35,6 +40,7 @@ export interface Track {
   artists?: Artist[];
   createdAt?: Date;
   updatedAt?: Date;
+  playsByDay?: PlaysByDay[];
 }
 
 export interface Artist {

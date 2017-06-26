@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { Routes, RouterModule } from '@angular/router';
+
+import { TrendModule } from 'ngx-trend';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
@@ -44,9 +46,11 @@ const routes: Routes = [
     BrowserModule,
     HttpModule,
     RouterModule.forRoot(routes),
+
     NgbModule.forRoot(),
     InfiniteScrollModule,
     XmUtility,
+    TrendModule,
   ],
   providers: [Api],
   bootstrap: [AppComponent]

@@ -13,6 +13,7 @@ import { Track } from '../app.interfaces';
 })
 export class TrackComponent implements OnInit, OnDestroy {
   track: Track;
+  playsByDay: number[] = [];
   private sub: Subscription;
 
   constructor(
@@ -27,6 +28,8 @@ export class TrackComponent implements OnInit, OnDestroy {
         .getTrack(+params['trackId'])
         .subscribe((track) => {
           this.track = track;
+          this.playsByDay = track.playsByDay.map((n) => +n.count);
+          this.playsByDay.unshift(0);
         });
     });
   }

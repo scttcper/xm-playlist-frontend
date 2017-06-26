@@ -7,7 +7,7 @@ import { Spotify } from '../app.interfaces';
   selector: 'xm-coverart',
   template: `
   <a [routerLink]="['/track', trackId]">
-    <img class="img-fluid" width="100%" [src]="image">
+    <img class="img-fluid card-img-top" width="100%" [src]="image">
   </a>
   `,
 })
