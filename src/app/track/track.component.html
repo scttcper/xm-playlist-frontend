@@ -20,13 +20,15 @@
               <xm-time-since [date]="track.updatedAt"></xm-time-since>
             </p>
           </li>
+          <li class="list-group-item">
+            <p class="m-0">Played - {{ track.plays | number }} times</p>
+          </li>
+          <li class="list-group-item justify-content-center">
+            <xm-links class="text-center" [hideTrack]="true" [name]="track.name"
+              [artists]="track.artists" [trackId]="track.id">
+            </xm-links>
+          </li>
         </ul>
-        <div>
-          <xm-links class="text-center" [hideTrack]="true" [name]="track.name"
-            [artists]="track.artists" [trackId]="track.id">
-          </xm-links>
-        </div>
-        <div id="plays" style="margin-bottom: -6px"></div>
       </div>
       <div class="card mt-4" *ngIf="playsByDay">
         <div class="card-block text-center">
