@@ -20,11 +20,17 @@
   <div class="row mt-2 justify-content-center">
     <div class="col-sm-6 col-md-4 col-lg-2 mb-3" *ngFor="let channel of channels">
       <div class="card h-100 text-center" [routerLink]="['station', channel.id]">
-        <a [routerLink]="['/station', channel.id]">
-          <img width="100%" class="card-img-top img-fluid p-3" [alt]="channel.name" [src]="'/assets/img/' + channel.id + '.png'">
-        </a>
-        <div class="card-block p-2">
-          <p class="pb-0">{{ channel.number }} - {{ channel.name }}</p>
+        <div class="row m-0">
+          <div class="col-6 col-sm-12 black">
+            <a [routerLink]="['/station', channel.id]">
+              <img width="100%" class="card-img-top img-fluid p-3" [alt]="channel.name" [src]="'/assets/img/' + channel.id + '.png'">
+            </a>
+          </div>
+          <div class="col-6 col-sm-12 white border-0">
+            <div class="card-block p-2">
+              <p class="pb-0">{{ channel.number }} - {{ channel.name }}</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

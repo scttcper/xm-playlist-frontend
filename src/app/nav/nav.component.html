@@ -1,19 +1,5 @@
 <nav class="navbar navbar-inverse navbar-toggleable-sm">
   <div class="container">
     <a class="navbar-brand" [routerLink]="['/']">xmplaylist</a>
-
-    <ul class="navbar-nav mr-auto">
-      <li ngbDropdown class="nav-item dropdown">
-        <a ngbDropdownToggle class="nav-link dropdown-toggle">
-          Stations
-        </a>
-        <div class="dropdown-menu">
-          <a *ngFor="let channel of channels | async" class="dropdown-item" [routerLink]="['/station', channel.id]">
-            {{ channel.number }} - {{ channel.name }}
-          </a>
-        </div>
-      </li>
-    </ul>
-
   </div>
 </nav>

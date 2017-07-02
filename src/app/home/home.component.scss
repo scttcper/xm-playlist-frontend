@@ -19,16 +19,17 @@
 }
 
 .card {
-  background: #181818;
   cursor: pointer;
 }
-.card-img-top {
+.black {
+  background: #181818;
+}
+img {
   @include filter(grayscale, 100%);
 }
 
-.card-block {
+.white {
   background: #ffffff;
-  border-radius: .2rem;
 }
 
 .jumbotron {
