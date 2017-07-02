@@ -14,6 +14,7 @@ export class Api {
   private url: string = environment.api;
   private spotifyCache: any = {};
   private channelCache: Observable<Channel[]>;
+  private trackCache: any = {};
 
   constructor(private http: Http) { }
 
@@ -35,13 +36,35 @@ export class Api {
     }
     return this.http
       .get(`${this.url}/recent/${channelName}`, { search })
-      .map(res => res.json())
+      .map(res => {
+        const r = res.json();
+        r.map(n => {
+          this.trackCache[n.trackId] = Observable.of(n.track);
+        });
+        return r;
+      })
       .catch(this.handleError);
   }
 
+  /* returns cache of track without activity or gets with activity */
   getTrack(trackId: number): Observable<Track> {
+    if (!this.trackCache[trackId]) {
+      this.trackCache[trackId] = this.http
+        .get(`${this.url}/track/${trackId}`)
+        .map(res => res.json())
+        .catch(() => {
+          return Observable.of(null);
+        })
+        .publishReplay()
+        .refCount();
+    }
+    return this.trackCache[trackId];
+  }
+
+  /* gets only missing activity */
+  getActivity(trackId: number) {
     return this.http
-      .get(`${this.url}/track/${trackId}`)
+      .get(`${this.url}/trackActivity/${trackId}`)
       .map(res => res.json())
       .catch(this.handleError);
   }

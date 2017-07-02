@@ -28,10 +28,18 @@ export class TrackComponent implements OnInit, OnDestroy {
         .getTrack(+params['trackId'])
         .subscribe((track) => {
           this.track = track;
-          this.playsByDay = track.playsByDay.map((n) => +n.count);
-          this.playsByDay.unshift(0);
+          if (track.playsByDay) {
+            this.setupActivity(track.playsByDay);
+          } else {
+            this.api.getActivity(track.id)
+              .subscribe(n => this.setupActivity(n));
+          }
         });
     });
+  }
+  setupActivity(playsByDay) {
+    this.playsByDay = playsByDay.map((n) => +n.count);
+    this.playsByDay.unshift(0);
   }
   ngOnDestroy() {
     this.sub.unsubscribe();

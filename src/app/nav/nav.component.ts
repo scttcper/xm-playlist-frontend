@@ -7,7 +7,13 @@ import { Channel } from '../app.interfaces';
 
 @Component({
   selector: 'xm-nav',
-  templateUrl: './nav.component.html',
+  template: `
+  <nav class="navbar navbar-inverse navbar-toggleable-sm">
+    <div class="container">
+      <a class="navbar-brand" routerLink="/">[xmplaylist]</a>
+    </div>
+  </nav>
+  `,
   styles: [`
     .dropdown-menu {
       max-height: 400px;
@@ -23,7 +29,6 @@ import { Channel } from '../app.interfaces';
 })
 export class NavComponent implements OnInit, OnDestroy {
   isCollapsed = true;
-  channels: Observable<Channel[]>;
   channelName: string;
   private sub: Subscription;
 
@@ -32,7 +37,6 @@ export class NavComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.channels = this.api.getChannels();
     this.sub = this.api.currentChannel.subscribe((channelName) => {
       this.channelName = channelName;
       console.log(channelName);
