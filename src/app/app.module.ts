@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { TrendModule } from 'ngx-trend';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { Angulartics2Module, Angulartics2GoogleAnalytics } from 'angulartics2';
 
 import { AppComponent } from './app.component';
 import { StreamComponent } from './stream/stream.component';
@@ -46,9 +47,11 @@ const routes: Routes = [
     HttpModule,
     RouterModule.forRoot(routes),
 
+    Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ]),
     InfiniteScrollModule,
-    XmUtility,
     TrendModule,
+
+    XmUtility,
   ],
   providers: [Api],
   bootstrap: [AppComponent]
