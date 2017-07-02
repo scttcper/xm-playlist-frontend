@@ -8,7 +8,7 @@
         <div class="media-body pb-3 ml-3">
           <h5 class="text-muted"><small>Most Played Today</small></h5>
           <h4>{{ mostHeard.name }}</h4>
-          <a [routerLink]="['/artist', artist.name]" class="card-link" *ngFor="let artist of mostHeard.artists">
+          <a [routerLink]="['/artist', artist.id]" class="card-link" *ngFor="let artist of mostHeard.artists">
             {{ artist.name }}
           </a>
           <div style="margin-left: -20px">
