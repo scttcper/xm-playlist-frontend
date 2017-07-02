@@ -21,7 +21,6 @@
     "@angular/platform-browser": "^4.2.5",
     "@angular/platform-browser-dynamic": "^4.2.5",
     "@angular/router": "^4.2.5",
-    "@ng-bootstrap/ng-bootstrap": "^1.0.0-alpha.27",
     "bootstrap": "^4.0.0-alpha.6",
     "core-js": "^2.4.1",
     "date-fns": "^2.0.0-alpha.1",
