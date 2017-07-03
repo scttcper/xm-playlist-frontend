@@ -1,7 +1,7 @@
 <div class="container mb-5">
   <div class="row justify-content-center" *ngIf="track">
     <div class="col-sm-12 col-md-8 col-lg-6">
-      <div class="card">
+      <div class="card mb-4">
         <xm-coverart [trackId]="track.id"></xm-coverart>
         <div class="card-block">
           <h4 class="card-title">{{track.name}}</h4>
@@ -23,14 +23,37 @@
           <li class="list-group-item">
             <p class="m-0">Played - {{ track.plays | number }} times</p>
           </li>
-          <li class="list-group-item justify-content-center">
-            <xm-links class="text-center" [hideTrack]="true" [name]="track.name"
-              [artists]="track.artists" [trackId]="track.id">
-            </xm-links>
-          </li>
         </ul>
       </div>
-      <div class="card mt-4" *ngIf="playsByDay">
+      <div class="card mb-4">
+        <div class="card-block text-center">
+          <h4 class="card-title mb-1">Links</h4>
+          <!-- <p class="card-text"><small class="text-muted">Last 30 Days</small></p> -->
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <p class="mb-0">
+              <i class="fa fa-spotify"></i> Spotify - <a [href]="spotifyLink">{{spotify?.spotifyId}}</a>
+            </p>
+          </li>
+          <li class="list-group-item">
+            <p class="mb-0">
+              <i class="fa fa-youtube-play"></i> YouTube - <a [href]="youtubeLink">Search</a>
+            </p>
+          </li>
+          <!-- <li class="list-group-item">
+            <p class="mb-0">
+              <i class="fa fa-apple" aria-hidden="true"></i> iTunes:
+            </p>
+          </li>
+          <li class="list-group-item">
+            <p class="mb-0">
+              <i class="fa fa-amazon" aria-hidden="true"></i> Amazon:
+            </p>
+          </li> -->
+        </ul>
+      </div>
+      <div class="card mb-4" *ngIf="playsByDay">
         <div class="card-block text-center">
           <h4 class="card-title mb-1">Activity</h4>
           <p class="card-text"><small class="text-muted">Last 30 Days</small></p>

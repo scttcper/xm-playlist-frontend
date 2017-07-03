@@ -75,6 +75,12 @@ export class Api {
       .map(res => res.json())
       .catch(this.handleError);
   }
+  getArtist(id: number) {
+    return this.http
+      .get(`${this.url}/artist/${id}`)
+      .map(res => res.json())
+      .catch(this.handleError);
+  }
 
   getSpotify(trackId: number): Observable<Spotify> {
     if (!this.spotifyCache[trackId]) {

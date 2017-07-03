@@ -10,9 +10,11 @@ import { Play } from '../app.interfaces';
     <a [routerLink]="['/track', trackId]" *ngIf="!hideTrack" class="btn btn-secondary info" role="button">
       <i class="fa fa-info-circle"></i>
     </a>
+    <!--
     <a [href]="hypem" target="_blank" class="btn btn-secondary hypem" role="button">
       <i class="fa fa-heart"></i>
     </a>
+    -->
     <a [href]="youtube" target="_blank" class="btn btn-secondary youtube" role="button">
       <i class="fa fa-youtube-play"></i>
     </a>

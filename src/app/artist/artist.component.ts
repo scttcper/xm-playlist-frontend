@@ -1,28 +1,37 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Title } from '@angular/platform-browser';
+
 import { Subscription } from 'rxjs/Subscription';
+import { Observable } from 'rxjs/Observable';
+import * as _ from 'lodash';
+
+import { Api } from '../api';
+import { Channel, Play } from '../app.interfaces';
+
 
 @Component({
-  selector: 'app-artist',
+  selector: 'xm-artist',
   templateUrl: './artist.component.html',
-  styleUrls: ['./artist.component.css']
 })
-export class ArtistComponent implements OnInit, OnDestroy {
-
-  private sub: Subscription;
+export class ArtistComponent implements OnInit {
+  tracks: any[];
+  artist: any;
 
   constructor(
+    private api: Api,
     private route: ActivatedRoute,
+    private title: Title
   ) { }
 
   ngOnInit() {
-    this.sub = this.route.params.subscribe((params: Params) => {
-      const artistName = params['artistName'];
-
+    this.route.params.subscribe((params) => {
+      this.api.getArtist(+params['id'])
+        .subscribe((res) => {
+          this.tracks = res.tracks;
+          this.artist = res.artist;
+        });
     });
-  }
-  ngOnDestroy() {
-    this.sub.unsubscribe();
   }
 
 }

@@ -53,7 +53,7 @@
               </small>
             </p>
             <h5 class="card-title">{{ play.track.name }}</h5>
-            <a [routerLink]="['/artist', artist]" class="mr-2" *ngFor="let artist of play.track.artists">
+            <a [routerLink]="['/artist', artist.id]" class="mr-2" *ngFor="let artist of play.track.artists">
               {{ artist.name }}
             </a>
           </div>

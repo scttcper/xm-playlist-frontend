@@ -1,20 +1,21 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Subscription } from 'rxjs/Subscription';
 
 import { Api } from '../api';
-import { Track } from '../app.interfaces';
+import { Track, Spotify } from '../app.interfaces';
 
 @Component({
   selector: 'xm-track',
   templateUrl: './track.component.html',
   styleUrls: ['./track.component.css']
 })
-export class TrackComponent implements OnInit, OnDestroy {
+export class TrackComponent implements OnInit {
   track: Track;
   playsByDay: number[] = [];
-  private sub: Subscription;
+  spotify: Spotify;
+  spotifyLink = '';
+  youtubeLink = '';
 
   constructor(
     private api: Api,
@@ -23,26 +24,38 @@ export class TrackComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.sub = this.route.params.subscribe((params: Params) => {
+    this.route.params.subscribe((params: Params) => {
+      this.spotify = undefined;
+      this.spotifyLink = '';
+      this.youtubeLink = '';
       this.api
         .getTrack(+params['trackId'])
         .subscribe((track) => {
           this.track = track;
+          this.title.setTitle(`${track.name}`);
           if (track.playsByDay) {
             this.setupActivity(track.playsByDay);
           } else {
             this.api.getActivity(track.id)
               .subscribe(n => this.setupActivity(n));
           }
+          const artists = this.track.artists.map(n => n.name);
+          const str = this.track.name.replace(/[\s\/()]/g, '+') + '+' + artists.join('+').replace(/[\s\/()]/g, '+');
+          this.youtubeLink = `https://www.youtube.com/results?search_query=${str}`;
+        });
+      this.api.getSpotify(+params['trackId'])
+        .subscribe((spotify) => {
+          if (!spotify) {
+            return;
+          }
+          this.spotify = spotify;
+          this.spotifyLink = `https://open.spotify.com/track/${spotify.spotifyId}`;
         });
     });
   }
   setupActivity(playsByDay) {
     this.playsByDay = playsByDay.map((n) => +n.count);
     this.playsByDay.unshift(0);
-  }
-  ngOnDestroy() {
-    this.sub.unsubscribe();
   }
 
 }

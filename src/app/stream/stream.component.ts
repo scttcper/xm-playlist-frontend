@@ -1,7 +1,7 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
-import { Subscription } from 'rxjs/Subscription';
+
 import { Observable } from 'rxjs/Observable';
 import * as _ from 'lodash';
 
@@ -12,7 +12,7 @@ import { Channel, Play } from '../app.interfaces';
   selector: 'xm-stream',
   templateUrl: './stream.component.html',
 })
-export class StreamComponent implements OnInit, OnDestroy {
+export class StreamComponent implements OnInit {
   channels: Observable<Channel[]>;
   streams: Play[][];
   mostHeard: Play;
@@ -21,7 +21,6 @@ export class StreamComponent implements OnInit, OnDestroy {
   total: number;
   end = false;
 
-  private sub: Subscription;
   private page = 0;
   private loading = false;
   private lastLoaded: Play;
@@ -35,7 +34,7 @@ export class StreamComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.channels = this.api.getChannels();
-    this.sub = this.route.params.subscribe((params: Params) => {
+    this.route.params.subscribe((params) => {
       // get segment id from route
       this.end = false;
       const channelName = params['channelName'];
@@ -50,10 +49,12 @@ export class StreamComponent implements OnInit, OnDestroy {
         this.total = _.sumBy(res, 'playCount');
         this.mostHeard = res[0];
       });
+      this.api.getChannels()
+        .subscribe((res) => {
+          const chan = _.find(res, _.matchesProperty('id', channelName))
+          this.title.setTitle(`channel: ${chan.name}`);
+        })
     });
-  }
-  ngOnDestroy() {
-    this.sub.unsubscribe();
   }
   getRecentPage() {
     if (this.loading || this.end) {

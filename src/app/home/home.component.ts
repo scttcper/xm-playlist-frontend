@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Title } from '@angular/platform-browser';
+
 import { Observable } from 'rxjs/Observable';
 import * as _ from 'lodash';
 
@@ -21,9 +23,11 @@ export class HomeComponent implements OnInit {
     private api: Api,
     private router: Router,
     private route: ActivatedRoute,
+    private title: Title,
   ) { }
 
   ngOnInit() {
+    this.title.setTitle('xmplaylist - XM and Sirius radio recently played');
     this.api.getChannels().subscribe((res) => {
       this.allChannels = res;
       this.channels = res;

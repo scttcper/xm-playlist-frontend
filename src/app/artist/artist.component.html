@@ -1,3 +1,28 @@
-<p>
-  artist works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h1>{{ artist?.name }}</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6 col-lg-4 col-xl-3" *ngFor="let track of tracks" style="margin-bottom:30px">
+      <div class="card h-100">
+        <xm-coverart [trackId]="track.id"></xm-coverart>
+        <div class="card-block">
+          <p class="card-text">
+            <small class="text-muted">{{ track.plays | number }} plays</small>
+          </p>
+          <h5 class="card-title">{{ track.name }}</h5>
+          <a [routerLink]="['/artist', artist.id]" class="mr-2" *ngFor="let artist of track.artists">
+            {{ artist.name }}
+          </a>
+        </div>
+        <div>
+          <xm-links class="text-center" [name]="track.name"
+            [artists]="track.artists" [trackId]="track.id">
+          </xm-links>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

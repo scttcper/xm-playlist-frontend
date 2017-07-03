@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'station/:channelName', component: StreamComponent },
   { path: 'track/:trackId', component: TrackComponent },
-  { path: 'artist/:artist', component: ArtistComponent },
+  { path: 'artist/:id', component: ArtistComponent },
   {
     path: '**',
     redirectTo: '',
