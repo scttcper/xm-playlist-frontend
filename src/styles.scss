@@ -1,5 +1,4 @@
 // @import 'node_modules/bootstrap/scss/_variables';
-$card-border-color: #181818;
 
 @import "node_modules/bootstrap/scss/variables";
 @import "node_modules/bootstrap/scss/mixins";
@@ -54,15 +53,4 @@ nav {
 
 .card-link:hover {
   text-decoration: underline;
-}
-.btn-secondary {
-  border-radius: 20px;
-  border-color: #181818;
-}
-.btn-secondary:hover {
-  border-color: #181818;
-}
-.btn-secondary.active {
-  background: mediumspringgreen;
-  border-color: #181818;
 }

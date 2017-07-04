@@ -1,3 +1,4 @@
+<xm-nav></xm-nav>
 <div class="container">
   <div class="row" *ngIf="mostHeard">
     <div class="col-md-6 col-sm-12 pb-5">
@@ -19,9 +20,10 @@
         </div>
       </div>
     </div>
+
     <div class="col-md-6 col-sm-12">
       <div class="row">
-        <div class="col">
+        <div class="col-4">
           <div class="text-center card-block">
             <h2>{{ total }}</h2>
             <p class="card-text">
@@ -29,13 +31,23 @@
             </p>
           </div>
         </div>
-        <div class="col">
+        <div class="col-4">
           <div class="text-center card-block">
             <h2>{{ unique }}</h2>
             <p class="card-text">
               <small>unique songs last 24 hours</small>
             </p>
           </div>
+        </div>
+        <div class="col-4">
+          <a [href]="spotifyLink">
+            <div class="text-center card-block">
+              <h2><i class="fa fa-spotify" aria-hidden="true"></i></h2>
+              <p class="card-text">
+                On Spotify
+              </p>
+            </div>
+          </a>
         </div>
       </div>
     </div>

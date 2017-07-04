@@ -13,3 +13,19 @@
 .display-3 {
   font-family: "Times New Roman", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
+.btn-secondary {
+  border-radius: 20px;
+  background: #181818;
+  color: #ffffff;
+  border-color: #ffffff;
+}
+.btn-secondary:hover {
+  background-image: linear-gradient( 135deg, #5EFCE8 0%, #736EFE 100%);
+  color: #ffffff;
+  border-color: #eeeeee;
+}
+.btn-secondary.active {
+  background-image: linear-gradient( 135deg, #FAD7A1 0%, #E96D71 100%);
+  color: #ffffff;
+  border-color: #ffffff;
+}

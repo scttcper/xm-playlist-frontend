@@ -5,6 +5,7 @@ export interface Channel {
   genre: string;
   desc: string;
   img: string;
+  playlist: string;
 }
 
 export interface Play {

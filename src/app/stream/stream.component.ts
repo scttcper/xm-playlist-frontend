@@ -13,8 +13,8 @@ import { Channel, Play } from '../app.interfaces';
   templateUrl: './stream.component.html',
 })
 export class StreamComponent implements OnInit {
-  channels: Observable<Channel[]>;
   streams: Play[][];
+  spotifyLink: string;
   mostHeard: Play;
   mostTimesHeard: number;
   unique: number;
@@ -33,7 +33,6 @@ export class StreamComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.channels = this.api.getChannels();
     this.route.params.subscribe((params) => {
       // get segment id from route
       this.end = false;
@@ -52,7 +51,8 @@ export class StreamComponent implements OnInit {
       this.api.getChannels()
         .subscribe((res) => {
           const chan = _.find(res, _.matchesProperty('id', channelName))
-          this.title.setTitle(`channel: ${chan.name}`);
+          this.title.setTitle(`${chan.name} - xmplaylist.com recently played`);
+          this.spotifyLink = `https://open.spotify.com/user/xmplaylist/playlist/${chan.playlist}`;
         })
     });
   }
