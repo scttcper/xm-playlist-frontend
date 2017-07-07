@@ -59,7 +59,7 @@
           <h4 class="card-title mb-1">Activity</h4>
           <p class="card-text"><small class="text-muted">Last 30 Days</small></p>
         </div>
-        <div class="card-block p-1 text-center">
+        <div class="card-block p-1 text-center" *ngIf="playsByDay">
           <ngx-trend smooth="true" autoDraw="true" autoDrawEasing="ease-in" [data]="playsByDay"></ngx-trend>
         </div>
       </div>

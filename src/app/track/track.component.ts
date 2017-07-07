@@ -12,7 +12,7 @@ import { Track, Spotify } from '../app.interfaces';
 })
 export class TrackComponent implements OnInit {
   track: Track;
-  playsByDay: number[] = [];
+  playsByDay: number[];
   spotify: Spotify;
   spotifyLink = '';
   youtubeLink = '';
