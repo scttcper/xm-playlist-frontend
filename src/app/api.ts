@@ -40,7 +40,9 @@ export class Api {
         const r = res.json();
         r.map(n => {
           this.trackCache[n.trackId] = Observable.of(n.track);
-          this.spotifyCache[n.trackId] = Observable.of(n.track.spotify);
+          if (n.track.spotify) {
+            this.spotifyCache[n.trackId] = Observable.of(n.track.spotify);
+          }
         });
         return r;
       })
