@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Title } from '@angular/platform-browser';
+import { Title, Meta } from '@angular/platform-browser';
 
 import { Observable } from 'rxjs/Observable';
 import * as _ from 'lodash';
@@ -29,10 +29,16 @@ export class StreamComponent implements OnInit {
   constructor(
     private api: Api,
     private route: ActivatedRoute,
-    private title: Title
+    private title: Title,
+    private meta: Meta,
   ) { }
 
   ngOnInit() {
+    this.meta.updateTag({id: 'og:url', url: window.location.href});
+    this.meta.updateTag({id: 'og:description', content: `
+    Recently played tracks on sirius xm and xm radio.
+    Spotify playlist automatically updated.
+    `});
     this.route.params.subscribe((params) => {
       // get segment id from route
       this.end = false;
@@ -51,7 +57,9 @@ export class StreamComponent implements OnInit {
       this.api.getChannels()
         .subscribe((res) => {
           const chan = _.find(res, _.matchesProperty('id', channelName))
-          this.title.setTitle(`${chan.name} - xmplaylist.com recently played`);
+          this.title.setTitle(`${chan.name} recently played - xmplaylist.com`);
+          this.meta.updateTag({ id: 'og:title', content: `${chan.name} recently played` });
+          this.meta.updateTag({ id: 'og:image', url: `/assets/img/${chan.id}.png` });
           this.spotifyLink = `https://open.spotify.com/user/xmplaylist/playlist/${chan.playlist}`;
         })
     });
