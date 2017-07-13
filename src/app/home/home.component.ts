@@ -54,11 +54,11 @@ export class HomeComponent implements OnInit {
     if (this.curGenre === genre) {
       this.curGenre = undefined;
       this.channels = this.allChannels;
-      this.router.navigate([])
+      this.router.navigate([]);
       return;
     }
     this.curGenre = genre;
-    this.router.navigate([], { queryParams: { genre }})
+    this.router.navigate([], { queryParams: { genre }});
   }
 
 

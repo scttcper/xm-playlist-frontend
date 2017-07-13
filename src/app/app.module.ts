@@ -19,7 +19,7 @@ import { TrackComponent } from './track/track.component';
 import { ArtistComponent } from './artist/artist.component';
 
 
-const routes: Routes = [
+export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'station/:channelName', component: StreamComponent },
   { path: 'track/:trackId', component: TrackComponent },

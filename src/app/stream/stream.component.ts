@@ -56,12 +56,12 @@ export class StreamComponent implements OnInit {
       });
       this.api.getChannels()
         .subscribe((res) => {
-          const chan = _.find(res, _.matchesProperty('id', channelName))
+          const chan = _.find(res, _.matchesProperty('id', channelName));
           this.title.setTitle(`${chan.name} recently played - xmplaylist.com`);
           this.meta.updateTag({ id: 'og:title', content: `${chan.name} recently played` });
           this.meta.updateTag({ id: 'og:image', url: `/assets/img/${chan.id}.png` });
           this.spotifyLink = `https://open.spotify.com/user/xmplaylist/playlist/${chan.playlist}`;
-        })
+        });
     });
   }
   getRecentPage() {

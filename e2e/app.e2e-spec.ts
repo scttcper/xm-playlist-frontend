@@ -7,7 +7,7 @@ describe('xm-playlist-frontend App', function() {
     page = new XmPlaylistFrontendPage();
   });
 
-  it('should display message saying app works', () => {
+  it('should display welcome message', () => {
     page.navigateTo();
     expect(page.getParagraphText()).toEqual('app works!');
   });
