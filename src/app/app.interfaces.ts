@@ -42,6 +42,7 @@ export interface Track {
   createdAt?: Date;
   updatedAt?: Date;
   playsByDay?: PlaysByDay[];
+  spotify: Spotify;
 }
 
 export interface Artist {

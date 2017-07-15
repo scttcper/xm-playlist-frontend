@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
-import { URLSearchParams } from '@angular/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 
@@ -16,13 +15,12 @@ export class Api {
   private channelCache: Observable<Channel[]>;
   private trackCache: any = {};
 
-  constructor(private http: Http) { }
+  constructor(private http: HttpClient) { }
 
   getChannels(): Observable<Channel[]> {
     if (!this.channelCache)  {
       this.channelCache = this.http
-        .get(`${this.url}/channels`)
-        .map(res => res.json())
+        .get<Channel[]>(`${this.url}/channels`)
         .publishReplay()
         .refCount();
     }
@@ -30,22 +28,19 @@ export class Api {
   }
 
   getRecent(channelName: string, last?: Play): Observable<Play[]> {
-    const search = new URLSearchParams();
+    const params = new HttpParams();
     if (last) {
-      search.set('last', String(new Date(last.startTime).getTime()));
+      params.set('last', String(new Date(last.startTime).getTime()));
     }
     return this.http
-      .get(`${this.url}/recent/${channelName}`, { search })
-      .map(res => {
-        const r = res.json();
-        r.map(n => {
-          this.trackCache[n.trackId] = Observable.of(n.track);
-          if (n.track.spotify) {
-            this.spotifyCache[n.trackId] = Observable.of(n.track.spotify);
-          }
-        });
-        return r;
-      })
+      .get<Play[]>(`${this.url}/recent/${channelName}`, { params })
+      .map(res => res.map(n => {
+        this.trackCache[n.trackId] = Observable.of(n.track);
+        if (n.track.spotify) {
+          this.spotifyCache[n.trackId] = Observable.of(n.track.spotify);
+        }
+        return n;
+      }))
       .catch(this.handleError);
   }
 
@@ -54,7 +49,6 @@ export class Api {
     if (!this.trackCache[trackId]) {
       this.trackCache[trackId] = this.http
         .get(`${this.url}/track/${trackId}`)
-        .map(res => res.json())
         .catch(() => {
           return Observable.of(null);
         })
@@ -68,20 +62,17 @@ export class Api {
   getActivity(trackId: number) {
     return this.http
       .get(`${this.url}/trackActivity/${trackId}`)
-      .map(res => res.json())
       .catch(this.handleError);
   }
 
   mostHeard(channelName: string): Observable<any[]> {
     return this.http
       .get(`${this.url}/mostHeard/${channelName}`)
-      .map(res => res.json())
       .catch(this.handleError);
   }
   getArtist(id: number) {
     return this.http
       .get(`${this.url}/artist/${id}`)
-      .map(res => res.json())
       .catch(this.handleError);
   }
 
@@ -89,7 +80,6 @@ export class Api {
     if (!this.spotifyCache[trackId]) {
       this.spotifyCache[trackId] = this.http
         .get(`${this.url}/spotify/${trackId}`)
-        .map(res => res.json())
         .catch(() => {
           return Observable.of(null);
         })
