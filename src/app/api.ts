@@ -28,12 +28,12 @@ export class Api {
   }
 
   getRecent(channelName: string, last?: Play): Observable<Play[]> {
-    const params = new HttpParams();
+    let params = new HttpParams();
     if (last) {
-      params.set('last', String(new Date(last.startTime).getTime()));
+      params = params.set('last', String(new Date(last.startTime).getTime()));
     }
     return this.http
-      .get<Play[]>(`${this.url}/recent/${channelName}`, { params })
+      .get<Play[]>(`${this.url}/recent/${channelName}`, { params: params })
       .map(res => res.map(n => {
         this.trackCache[n.trackId] = Observable.of(n.track);
         if (n.track.spotify) {
