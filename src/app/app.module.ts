@@ -47,7 +47,7 @@ export const routes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(routes),
 
-    Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ]),
+    Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
     InfiniteScrollModule,
     TrendModule,
 
