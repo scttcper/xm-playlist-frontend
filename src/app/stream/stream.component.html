@@ -1,58 +1,28 @@
 <xm-nav></xm-nav>
-<div class="container">
-  <div class="row" *ngIf="mostHeard">
-    <div class="col-md-6 col-sm-12 pb-5">
-      <div class="media">
-        <div class="media-left" style="max-width:30%">
-          <xm-coverart [trackId]="mostHeard.id"></xm-coverart>
-        </div>
-        <div class="media-body pb-3 ml-3">
-          <h5 class="text-muted"><small>Most Played Today</small></h5>
-          <h4>{{ mostHeard.name }}</h4>
-          <a [routerLink]="['/artist', artist.id]" class="card-link" *ngFor="let artist of mostHeard.artists">
-            {{ artist.name }}
-          </a>
-          <div style="margin-left: -20px">
-            <xm-links [name]="mostHeard.name"
-              [artists]="mostHeard.artists" [trackId]="mostHeard.id">
-            </xm-links>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-6 col-sm-12">
-      <div class="row">
-        <div class="col-4">
-          <div class="text-center card-block">
-            <h2>{{ total }}</h2>
-            <p class="card-text">
-              <small>songs last 24 hours</small>
-            </p>
-          </div>
-        </div>
-        <div class="col-4">
-          <div class="text-center card-block">
-            <h2>{{ unique }}</h2>
-            <p class="card-text">
-              <small>unique songs last 24 hours</small>
-            </p>
-          </div>
-        </div>
-        <div class="col-4">
-          <a [href]="spotifyLink">
-            <div class="text-center card-block">
-              <h2><i class="fa fa-spotify" aria-hidden="true"></i></h2>
-              <p class="card-text">
-                On Spotify
-              </p>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
+<nav class="navbar navbar-toggleable-xl navbar-light bg-faded mb-3">
+  <div class="container">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="./" routerLinkActive="active">Stream</a>
+      </li>
+      <!-- <li class="nav-item">
+        <a class="nav-link" href="#">Latest</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Popular</a>
+      </li> -->
+    </ul>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" [href]="spotifyLink" target="_blank">
+          <i class="fa fa-spotify" aria-hidden="true"></i> Listen On Spotify
+        </a>
+      </li>
+    </ul>
   </div>
+</nav>
 
+<div class="container">
   <div class="row" infinite-scroll (scrolled)="onScroll()">
     <ng-template ngFor let-stream [ngForOf]="streams">
       <div class="col-sm-6 col-lg-4 col-xl-3" *ngFor="let play of stream" style="margin-bottom:30px">

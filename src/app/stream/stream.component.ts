@@ -15,10 +15,6 @@ import { Channel, Play } from '../app.interfaces';
 export class StreamComponent implements OnInit {
   streams: Play[][];
   spotifyLink: string;
-  mostHeard: Play;
-  mostTimesHeard: number;
-  unique: number;
-  total: number;
   end = false;
 
   private page = 0;
@@ -49,11 +45,6 @@ export class StreamComponent implements OnInit {
       }
       this.api.currentChannel.next(channelName);
       this.getRecentPage();
-      this.api.mostHeard(channelName).subscribe((res) => {
-        this.unique = res.length;
-        this.total = _.sumBy(res, 'playCount');
-        this.mostHeard = res[0];
-      });
       this.api.getChannels()
         .subscribe((res) => {
           const chan = _.find(res, _.matchesProperty('id', channelName));
