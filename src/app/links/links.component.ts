@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { Api } from '../api';
 import { Play } from '../app.interfaces';
+import { Spotify } from '../app.interfaces';
 
 @Component({
   selector: 'xm-links',
@@ -19,7 +20,7 @@ import { Play } from '../app.interfaces';
     <a [href]="youtube" target="_blank" class="btn btn-secondary youtube" role="button">
       <i class="fa fa-youtube-play"></i>
     </a>
-    <a [href]="spotify" *ngIf="spotify" target="_blank" class="btn btn-secondary spotify" role="button">
+    <a [href]="spotifyLink" *ngIf="spotifyLink" target="_blank" class="btn btn-secondary spotify" role="button">
       <i class="fa fa-spotify"></i>
     </a>
   </div>
@@ -44,9 +45,10 @@ export class LinksComponent implements OnInit {
   @Input() name: string;
   @Input() artists: any[];
   @Input() hideTrack: boolean;
+  @Input() spotify: Spotify;
   youtube = '';
   hypem = '';
-  spotify = '';
+  spotifyLink = '';
   channel = '';
 
   constructor(
@@ -60,12 +62,9 @@ export class LinksComponent implements OnInit {
     const str = this.name.replace(/[\s\/()]/g, '+') + '+' + artists.join('+').replace(/[\s\/()]/g, '+');
     this.hypem = `http://hypem.com/search/${str}/1/?sortby=favorite`;
     this.youtube = `https://www.youtube.com/results?search_query=${str}`;
-    this.api.getSpotify(this.trackId).subscribe((spotify) => {
-      if (!spotify) {
-        return;
-      }
-      this.spotify = `https://open.spotify.com/track/${spotify.spotifyId}`;
-    });
+    if (this.spotify) {
+      this.spotifyLink = `https://open.spotify.com/track/${this.spotify.id}`;
+    }
   }
 
 }

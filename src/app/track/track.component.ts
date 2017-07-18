@@ -41,14 +41,10 @@ export class TrackComponent implements OnInit {
           const artists = this.track.artists.map(n => n.name);
           const str = this.track.name.replace(/[\s\/()]/g, '+') + '+' + artists.join('+').replace(/[\s\/()]/g, '+');
           this.youtubeLink = `https://www.youtube.com/results?search_query=${str}`;
-        });
-      this.api.getSpotify(+params['trackId'])
-        .subscribe((spotify) => {
-          if (!spotify) {
-            return;
+          if (track.spotify) {
+            this.spotify = track.spotify;
+            this.spotifyLink = `https://open.spotify.com/track/${track.spotify.spotifyId}`;
           }
-          this.spotify = spotify;
-          this.spotifyLink = `https://open.spotify.com/track/${spotify.spotifyId}`;
         });
     });
   }

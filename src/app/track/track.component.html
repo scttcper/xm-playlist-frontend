@@ -1,17 +1,10 @@
-<div class="container mb-3">
-  <div class="row">
-    <div class="col-12">
-      <a routerLink="../../" class="btn btn-secondary">
-        <i class="fa fa-arrow-left" aria-hidden="true"></i> Back
-      </a>
-    </div>
-  </div>
-</div>
 <div class="container mb-5">
   <div class="row justify-content-center" *ngIf="track">
     <div class="col-sm-12 col-md-8 col-lg-6">
       <div class="card mb-4">
-        <xm-coverart [trackId]="track.id"></xm-coverart>
+        <a [routerLink]="['/track', track.id]">
+          <xm-coverart [spotify]="track.spotify"></xm-coverart>
+        </a>
         <div class="card-block">
           <h4 class="card-title">{{track.name}}</h4>
           <a [routerLink]="['/artist', artist.id]" class="card-link" *ngFor="let artist of track.artists">

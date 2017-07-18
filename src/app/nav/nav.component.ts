@@ -18,7 +18,7 @@ import { Channel } from '../app.interfaces';
     overflow-x: scroll;
   }
   .navbar {
-    background: #181818;
+    background: #242944;
   }
   .navbar-brand {
     font-family: 'Gruppo', cursive, "Times New Roman", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;

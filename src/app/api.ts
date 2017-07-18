@@ -9,7 +9,6 @@ import { Channel, Play, Spotify, Track } from './app.interfaces';
 @Injectable()
 export class Api {
   private url: string = environment.api;
-  private spotifyCache: any = {};
   private channelCache: Observable<Channel[]>;
   private trackCache: any = {};
 
@@ -34,9 +33,6 @@ export class Api {
       .get<Play[]>(`${this.url}/recent/${channelName}`, { params: params })
       .map(res => res.map(n => {
         this.trackCache[n.trackId] = Observable.of(n.track);
-        if (n.track.spotify) {
-          this.spotifyCache[n.trackId] = Observable.of(n.track.spotify);
-        }
         return n;
       }))
       .catch(this.handleError);
@@ -68,23 +64,11 @@ export class Api {
       .get(`${this.url}/mostHeard/${channelName}`)
       .catch(this.handleError);
   }
-  getArtist(id: number) {
+  getArtist(channelName: string, id: number) {
+    const params = new HttpParams().set('channel', channelName);
     return this.http
-      .get(`${this.url}/artist/${id}`)
+      .get(`${this.url}/artist/${id}`, { params })
       .catch(this.handleError);
-  }
-
-  getSpotify(trackId: number): Observable<Spotify> {
-    if (!this.spotifyCache[trackId]) {
-      this.spotifyCache[trackId] = this.http
-        .get(`${this.url}/spotify/${trackId}`)
-        .catch(() => {
-          return Observable.of(null);
-        })
-        .publishReplay()
-        .refCount();
-    }
-    return this.spotifyCache[trackId];
   }
 
   private handleError (error: Response | any) {
