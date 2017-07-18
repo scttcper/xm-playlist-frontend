@@ -8,7 +8,6 @@ import { Track, Spotify } from '../app.interfaces';
 @Component({
   selector: 'xm-track',
   templateUrl: './track.component.html',
-  styleUrls: ['./track.component.css']
 })
 export class TrackComponent implements OnInit {
   track: Track;

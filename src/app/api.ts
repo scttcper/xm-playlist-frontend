@@ -8,8 +8,6 @@ import { Channel, Play, Spotify, Track } from './app.interfaces';
 
 @Injectable()
 export class Api {
-
-  currentChannel: BehaviorSubject<string> = new BehaviorSubject('');
   private url: string = environment.api;
   private spotifyCache: any = {};
   private channelCache: Observable<Channel[]>;

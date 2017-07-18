@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { Api } from '../api';
 import { Play } from '../app.interfaces';
@@ -7,7 +8,7 @@ import { Play } from '../app.interfaces';
   selector: 'xm-links',
   template: `
   <div class="links m-2">
-    <a [routerLink]="['/track', trackId]" *ngIf="!hideTrack" class="btn btn-secondary info" role="button">
+    <a [routerLink]="['/station', channel, 'track', trackId]" *ngIf="!hideTrack" class="btn btn-secondary info" role="button">
       <i class="fa fa-info-circle"></i>
     </a>
     <!--
@@ -46,10 +47,15 @@ export class LinksComponent implements OnInit {
   youtube = '';
   hypem = '';
   spotify = '';
+  channel = '';
 
-  constructor(private api: Api) { }
+  constructor(
+    private api: Api,
+    private router: ActivatedRoute,
+  ) { }
 
   ngOnInit() {
+    this.router.parent.params.subscribe((n) => this.channel = n['channelName']);
     const artists = this.artists.map(n => n.name);
     const str = this.name.replace(/[\s\/()]/g, '+') + '+' + artists.join('+').replace(/[\s\/()]/g, '+');
     this.hypem = `http://hypem.com/search/${str}/1/?sortby=favorite`;

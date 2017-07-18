@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Title, Meta } from '@angular/platform-browser';
 
-import { Observable } from 'rxjs/Observable';
 import * as _ from 'lodash';
 
 import { Api } from '../api';
@@ -13,9 +12,9 @@ import { Channel, Play } from '../app.interfaces';
   templateUrl: './stream.component.html',
 })
 export class StreamComponent implements OnInit {
-  streams: Play[][];
-  spotifyLink: string;
+  streams: Play[][] = [];
   end = false;
+  channel: Channel;
 
   private page = 0;
   private loading = false;
@@ -38,31 +37,25 @@ export class StreamComponent implements OnInit {
     this.route.params.subscribe((params) => {
       // get segment id from route
       this.end = false;
-      const channelName = params['channelName'];
-      if (channelName !== this.oldChannel) {
-        this.streams = [];
-        this.oldChannel = channelName;
-      }
-      this.api.currentChannel.next(channelName);
-      this.getRecentPage();
+      this.streams = [];
+      this.getRecentPage(params['channelName']);
       this.api.getChannels()
         .subscribe((res) => {
-          const chan = _.find(res, _.matchesProperty('id', channelName));
+          const chan = _.find(res, _.matchesProperty('id', params['channelName']));
+          this.channel = chan;
           this.title.setTitle(`${chan.name} recently played - xmplaylist.com`);
           this.meta.updateTag({ id: 'og:title', content: `${chan.name} recently played` });
           this.meta.updateTag({ id: 'og:image', url: `/assets/img/${chan.id}.png` });
-          this.spotifyLink = `https://open.spotify.com/user/xmplaylist/playlist/${chan.playlist}`;
         });
     });
   }
-  getRecentPage() {
+  getRecentPage(channelName: string) {
     if (this.loading || this.end) {
       return;
     }
     this.loading = true;
-    const channel = this.api.currentChannel.getValue();
     this.api
-      .getRecent(channel, this.lastLoaded)
+      .getRecent(channelName, this.lastLoaded)
       .subscribe((recent) => {
         this.streams.push(recent);
         if (recent.length === 0) {
@@ -74,7 +67,7 @@ export class StreamComponent implements OnInit {
   }
   onScroll() {
     this.page = this.page + 1;
-    this.getRecentPage();
+    this.getRecentPage(this.channel.id);
   }
 
 }

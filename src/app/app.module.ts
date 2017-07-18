@@ -17,13 +17,20 @@ import { CoverartComponent } from './coverart/coverart.component';
 import { LinksComponent } from './links/links.component';
 import { TrackComponent } from './track/track.component';
 import { ArtistComponent } from './artist/artist.component';
+import { StationComponent } from './station/station.component';
 
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'station/:channelName', component: StreamComponent },
-  { path: 'track/:trackId', component: TrackComponent },
-  { path: 'artist/:id', component: ArtistComponent },
+  {
+    path: 'station/:channelName',
+    component: StationComponent,
+    children: [
+      { path: '', component: StreamComponent },
+      { path: 'track/:trackId', component: TrackComponent },
+      { path: 'artist/:id', component: ArtistComponent },
+    ],
+  },
   {
     path: '**',
     redirectTo: '',
@@ -41,6 +48,7 @@ export const routes: Routes = [
     LinksComponent,
     TrackComponent,
     ArtistComponent,
+    StationComponent,
   ],
   imports: [
     BrowserModule,

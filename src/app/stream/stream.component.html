@@ -1,27 +1,3 @@
-<xm-nav></xm-nav>
-<nav class="navbar navbar-toggleable-xl navbar-light bg-faded mb-3">
-  <div class="container">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" routerLink="./" routerLinkActive="active">Stream</a>
-      </li>
-      <!-- <li class="nav-item">
-        <a class="nav-link" href="#">Latest</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Popular</a>
-      </li> -->
-    </ul>
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" [href]="spotifyLink" target="_blank">
-          <i class="fa fa-spotify" aria-hidden="true"></i> Listen On Spotify
-        </a>
-      </li>
-    </ul>
-  </div>
-</nav>
-
 <div class="container">
   <div class="row" infinite-scroll (scrolled)="onScroll()">
     <ng-template ngFor let-stream [ngForOf]="streams">
@@ -35,7 +11,7 @@
               </small>
             </p>
             <h5 class="card-title">{{ play.track.name }}</h5>
-            <a [routerLink]="['/artist', artist.id]" class="mr-2" *ngFor="let artist of play.track.artists">
+            <a [routerLink]="['artist', artist.id]" class="mr-2" *ngFor="let artist of play.track.artists">
               {{ artist.name }}
             </a>
           </div>

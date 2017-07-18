@@ -1,31 +1,28 @@
+@mixin BoxShadowHelper($level: 1) {
+  @if $level == 1{
+    box-shadow: -1px 2px 5px 0 rgba(0, 0, 0, .04), -1px 2px 10px 0 rgba(0, 0, 0, .08);
+  }
+  @if $level == 2 {
+    box-shadow: -1px 5px 11px 0 rgba(0, 0, 0, .14), -1px 4px 15px 0 rgba(0, 0, 0, .12);
+  }
+}
 .card {
   cursor: pointer;
 }
-.black {
-  background: #181818;
+.shadow {
+  transition: 0.2s ease-in;
+  &:focus,
+  &:hover {
+    background: #eeeeee;
+    @include BoxShadowHelper(1);
+  }
+}
+.top {
+  background: #242944;
 }
 .white {
   background: #ffffff;
 }
 .jumbotron {
   background: #ffffff;
-}
-.display-3 {
-  font-family: "Times New Roman", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-}
-.btn-secondary {
-  border-radius: 20px;
-  background: #181818;
-  color: #ffffff;
-  border-color: #ffffff;
-}
-.btn-secondary:hover {
-  background-image: linear-gradient( 135deg, #5EFCE8 0%, #736EFE 100%);
-  color: #ffffff;
-  border-color: #eeeeee;
-}
-.btn-secondary.active {
-  background-image: linear-gradient( 135deg, #FAD7A1 0%, #E96D71 100%);
-  color: #ffffff;
-  border-color: #ffffff;
 }

@@ -1,6 +1,4 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription } from 'rxjs/Subscription';
-import { Observable } from 'rxjs/Observable';
 
 import { Api } from '../api';
 import { Channel } from '../app.interfaces';
@@ -8,9 +6,9 @@ import { Channel } from '../app.interfaces';
 @Component({
   selector: 'xm-nav',
   template: `
-  <nav class="navbar navbar-inverse navbar-toggleable-sm">
+  <nav class="navbar navbar-inverse navbar-toggleable">
     <div class="container">
-      <a class="navbar-brand" routerLink="/">[xmplaylist]</a>
+      <a class="navbar-brand" routerLink="/">xmplaylist</a>
     </div>
   </nav>
   `,
@@ -23,27 +21,23 @@ import { Channel } from '../app.interfaces';
     background: #181818;
   }
   .navbar-brand {
-    font-family: "Times New Roman", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-family: 'Gruppo', cursive, "Times New Roman", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
   }
   `],
 })
 export class NavComponent implements OnInit, OnDestroy {
   isCollapsed = true;
   channelName: string;
-  private sub: Subscription;
 
   constructor(
     private api: Api,
   ) { }
 
   ngOnInit() {
-    this.sub = this.api.currentChannel.subscribe((channelName) => {
-      this.channelName = channelName;
-      console.log(channelName);
-    });
+
   }
   ngOnDestroy() {
-    this.sub.unsubscribe();
+
   }
 
 
