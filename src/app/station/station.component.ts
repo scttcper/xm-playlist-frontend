@@ -10,17 +10,25 @@ import { Channel } from '../app.interfaces';
 @Component({
   selector: 'xm-station',
   template: `
-  <xm-nav></xm-nav>
   <nav class="navbar navbar-light bg-faded navbar-toggleable mb-3">
     <div class="container">
       <a class="navbar-brand" routerLink="./">{{channel?.name}}</a>
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" routerLink="./" routerLinkActive="active">Stream</a>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="./" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+            Stream
+          </a>
         </li>
-        <!-- <li class="nav-item">
-          <a class="nav-link" href="#">Latest</a>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="./latest" routerLinkActive="active">
+            Newest
+          </a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="./popular" routerLinkActive="active">
+            Popular
+          </a>
+        <!-- </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Popular</a>
         </li> -->

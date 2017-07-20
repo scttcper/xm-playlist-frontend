@@ -24,13 +24,13 @@ export class Api {
     return this.channelCache;
   }
 
-  getRecent(channelName: string, last?: Play): Observable<Play[]> {
+  getChannel(channelName: string, last?: Play): Observable<Play[]> {
     let params = new HttpParams();
     if (last) {
       params = params.set('last', String(new Date(last.startTime).getTime()));
     }
     return this.http
-      .get<Play[]>(`${this.url}/recent/${channelName}`, { params: params })
+      .get<Play[]>(`${this.url}/channel/${channelName}`, { params: params })
       .map(res => res.map(n => {
         this.trackCache[n.trackId] = Observable.of(n.track);
         return n;
@@ -68,6 +68,24 @@ export class Api {
     const params = new HttpParams().set('channel', channelName);
     return this.http
       .get(`${this.url}/artist/${id}`, { params })
+      .catch(this.handleError);
+  }
+  getNewest(channelName: string): Observable<Track[]> {
+    return this.http
+      .get<Track[]>(`${this.url}/newest/${channelName}`)
+      .map(res => res.map(n => {
+        this.trackCache[n.id] = Observable.of(n);
+        return n;
+      }))
+      .catch(this.handleError);
+  }
+  getPopular(channelName: string): Observable<Track[]> {
+    return this.http
+      .get<Track[]>(`${this.url}/popular/${channelName}`)
+      .map(res => res.map(n => {
+        this.trackCache[n.id] = Observable.of(n);
+        return n;
+      }))
       .catch(this.handleError);
   }
 

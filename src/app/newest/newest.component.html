@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 mb-3">
+      <h5 class="text-center">
+        Newest
+      </h5>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Artists</th>
+            <th>Plays</th>
+            <th>First Heard</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let track of tracks; trackBy: id">
+            <td>
+              <a [routerLink]="['../track', track.id]">{{ track.name }}</a>
+            </td>
+            <td>
+              <a [routerLink]="['../artist', artist.id]" class="mr-2" *ngFor="let artist of track.artists; trackBy: id">
+                {{ artist.name }}
+              </a>
+            </td>
+            <td>{{track.plays}}</td>
+            <td><xm-time-since [date]="track.createdAt"></xm-time-since></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

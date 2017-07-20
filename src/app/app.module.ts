@@ -18,6 +18,8 @@ import { LinksComponent } from './links/links.component';
 import { TrackComponent } from './track/track.component';
 import { ArtistComponent } from './artist/artist.component';
 import { StationComponent } from './station/station.component';
+import { NewestComponent } from './newest/newest.component';
+import { PopularComponent } from './popular/popular.component';
 
 
 export const routes: Routes = [
@@ -27,6 +29,8 @@ export const routes: Routes = [
     component: StationComponent,
     children: [
       { path: '', component: StreamComponent },
+      { path: 'latest', component: NewestComponent },
+      { path: 'popular', component: PopularComponent },
       { path: 'track/:trackId', component: TrackComponent },
       { path: 'artist/:id', component: ArtistComponent },
     ],
@@ -49,6 +53,8 @@ export const routes: Routes = [
     TrackComponent,
     ArtistComponent,
     StationComponent,
+    NewestComponent,
+    PopularComponent,
   ],
   imports: [
     BrowserModule,

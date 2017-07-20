@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row" infinite-scroll (scrolled)="onScroll()">
     <ng-template ngFor let-stream [ngForOf]="streams">
-      <div class="col-sm-6 col-lg-4 col-xl-3" *ngFor="let play of stream" style="margin-bottom:30px">
+      <div class="col-sm-6 col-lg-4 col-xl-3" *ngFor="let play of stream; trackBy: id" style="margin-bottom:30px">
         <div class="card h-100">
           <xm-coverart [spotify]="play.track.spotify"></xm-coverart>
           <div class="card-block">
@@ -11,7 +11,7 @@
               </small>
             </p>
             <h5 class="card-title">{{ play.track.name }}</h5>
-            <a [routerLink]="['artist', artist.id]" class="mr-2" *ngFor="let artist of play.track.artists">
+            <a [routerLink]="['artist', artist.id]" class="mr-2" *ngFor="let artist of play.track.artists; trackBy: id">
               {{ artist.name }}
             </a>
           </div>

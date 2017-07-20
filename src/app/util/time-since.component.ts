@@ -1,5 +1,5 @@
 import { Component, OnDestroy, Input, OnChanges } from '@angular/core';
-import * as formatDistance from 'date-fns/formatDistance';
+import { formatDistance, differenceInDays } from 'date-fns';
 
 @Component({
   selector: 'xm-time-since',
@@ -35,6 +35,8 @@ export class TimeSinceComponent implements OnDestroy, OnChanges {
     } else {
       this.timeSince = res;
     }
-    this.timeoutSetup();
+    if (differenceInDays(new Date(), this.date) < 1) {
+      this.timeoutSetup();
+    }
   }
 }

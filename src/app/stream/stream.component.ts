@@ -55,7 +55,7 @@ export class StreamComponent implements OnInit {
     }
     this.loading = true;
     this.api
-      .getRecent(channelName, this.lastLoaded)
+      .getChannel(channelName, this.lastLoaded)
       .subscribe((recent) => {
         this.streams.push(recent);
         if (recent.length === 0) {

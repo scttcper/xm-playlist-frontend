@@ -1,9 +1,8 @@
+<div class="jumbotron text-center">
+  <h1 class="display-3">xmplaylist</h1>
+  <p class="lead">XM and Sirius radio recently played</p>
+</div>
 <div class="container">
-  <div class="jumbotron text-center">
-    <h1 class="display-3">xmplaylist</h1>
-    <p class="lead">XM and Sirius radio recently played</p>
-  </div>
-
   <div class="row">
     <div class="col-12 text-center">
       <h6>Filter:</h6>
@@ -18,7 +17,7 @@
     </div>
   </div>
   <div class="row mt-2 justify-content-center">
-    <div class="col-sm-6 col-md-4 col-lg-2 mb-3" *ngFor="let channel of channels">
+    <div class="col-sm-6 col-md-4 col-lg-3 mb-3" *ngFor="let channel of channels">
       <div class="shadow h-100">
         <div class="card h-100 text-center" [routerLink]="['station', channel.id]">
           <div class="row m-0">
