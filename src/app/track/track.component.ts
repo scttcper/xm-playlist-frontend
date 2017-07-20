@@ -50,7 +50,6 @@ export class TrackComponent implements OnInit {
   }
   setupActivity(playsByDay) {
     this.playsByDay = playsByDay.map((n) => +n.count);
-    this.playsByDay.unshift(0);
   }
 
 }
