@@ -20,7 +20,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let track of tracks; trackBy: id">
+          <tr *ngFor="let track of tracks">
             <td>
               <a [routerLink]="['../track', track.id]">{{ track.name }}</a>
             </td>

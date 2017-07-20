@@ -69,5 +69,8 @@ export class StreamComponent implements OnInit {
     this.page = this.page + 1;
     this.getRecentPage(this.channel.id);
   }
+  trackById(index, item) {
+    return item.id;
+  }
 
 }
