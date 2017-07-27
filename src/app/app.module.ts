@@ -20,6 +20,7 @@ import { ArtistComponent } from './artist/artist.component';
 import { StationComponent } from './station/station.component';
 import { NewestComponent } from './newest/newest.component';
 import { PopularComponent } from './popular/popular.component';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 
 export const routes: Routes = [
@@ -55,6 +56,7 @@ export const routes: Routes = [
     StationComponent,
     NewestComponent,
     PopularComponent,
+    SpinnerComponent,
   ],
   imports: [
     BrowserModule,

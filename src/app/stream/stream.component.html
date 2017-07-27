@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mb-3">
   <div class="row" infinite-scroll (scrolled)="onScroll()">
     <ng-template ngFor let-stream [ngForOf]="streams">
       <div class="col-sm-6 col-lg-4 col-xl-3" *ngFor="let play of stream; trackBy: trackById" style="margin-bottom:30px">
@@ -24,5 +24,10 @@
         </div>
       </div>
     </ng-template>
+  </div>
+  <div class="row">
+    <div class="col-12 mt-3 mb-5">
+      <xm-spinner *ngIf="loading"></xm-spinner>
+    </div>
   </div>
 </div>

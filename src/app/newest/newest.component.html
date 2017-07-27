@@ -19,6 +19,13 @@
             <th>First Heard</th>
           </tr>
         </thead>
+        <tbody class="text-center" *ngIf="!tracks">
+          <tr>
+            <td colspan="4">
+              <xm-spinner></xm-spinner>
+            </td>
+          </tr>
+        </tbody>
         <tbody>
           <tr *ngFor="let track of tracks">
             <td>

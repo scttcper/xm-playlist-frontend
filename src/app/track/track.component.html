@@ -2,9 +2,7 @@
   <div class="row justify-content-center" *ngIf="track">
     <div class="col-sm-12 col-md-8 col-lg-6">
       <div class="card mb-4">
-        <a [routerLink]="['/track', track.id]">
-          <xm-coverart [spotify]="track.spotify"></xm-coverart>
-        </a>
+        <xm-coverart [spotify]="track.spotify"></xm-coverart>
         <div class="card-block">
           <h4 class="card-title">{{track.name}}</h4>
           <a [routerLink]="['/artist', artist.id]" class="card-link" *ngFor="let artist of track.artists">

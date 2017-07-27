@@ -16,8 +16,8 @@ export class StreamComponent implements OnInit {
   end = false;
   channel: Channel;
 
+  loading = false;
   private page = 0;
-  private loading = false;
   private lastLoaded: Play;
   private oldChannel = '';
 

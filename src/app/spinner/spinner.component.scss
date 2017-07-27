@@ -1,0 +1,9 @@
+@import 'node_modules/spinthatshit/src/_animations.scss';
+@import 'node_modules/spinthatshit/src/_variables.scss';
+$loader-color: #242944;
+@import 'node_modules/spinthatshit/src/loaders/_loader02.scss';
+
+.your-loader {
+  @include loader02;
+  margin: 0 auto;
+}

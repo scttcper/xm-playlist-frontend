@@ -38,6 +38,12 @@ import { Spotify } from '../app.interfaces';
   .spotify:hover {
     background-color: #1ED760;
   }
+  .btn:hover {
+    -webkit-box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1);
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1);
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
   `]
 })
 export class LinksComponent implements OnInit {
