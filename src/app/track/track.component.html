@@ -1,3 +1,4 @@
+<xm-spinner *ngIf="!track"></xm-spinner>
 <div class="container mb-5">
   <div class="row justify-content-center" *ngIf="track">
     <div class="col-sm-12 col-md-8 col-lg-6">
@@ -5,7 +6,7 @@
         <xm-coverart [spotify]="track.spotify"></xm-coverart>
         <div class="card-block">
           <h4 class="card-title">{{track.name}}</h4>
-          <a [routerLink]="['/artist', artist.id]" class="card-link" *ngFor="let artist of track.artists">
+          <a [routerLink]="['../../artist', artist.id]" class="card-link" *ngFor="let artist of track.artists">
             {{ artist.name }}
           </a>
         </div>
@@ -55,11 +56,12 @@
           </li> -->
         </ul>
       </div>
-      <div class="card mb-4" *ngIf="playsByDay">
+      <div class="card mb-4">
         <div class="card-block text-center">
           <h4 class="card-title mb-1">Activity</h4>
           <p class="card-text"><small class="text-muted">Last 30 Days</small></p>
         </div>
+        <xm-spinner *ngIf="!playsByDay"></xm-spinner>
         <div class="card-block p-1 text-center" *ngIf="playsByDay">
           <ngx-trend smooth="true" autoDraw="true" autoDrawEasing="ease-in" [data]="playsByDay"></ngx-trend>
         </div>
