@@ -1,4 +1,6 @@
 .card {
+  box-shadow: 8px 14px 38px rgba(39,44,49,.06), 1px 3px 8px rgba(39,44,49,.03);
+  transition: all .5s ease;
   cursor: pointer;
   .top {
     transition: all 0.2s ease-in;
@@ -6,23 +8,9 @@
   }
 }
 .card:hover {
-  cursor: pointer;
-  .top {
-    transition: all 0.2s ease-in;
-    background: lighten(#242944, 4%);
-  }
-}
-.shadow {
-  transition: all 0.2s ease-in;
-  &:focus,
-  &:hover {
-    -webkit-transform: scale(0.985);
-    transform: scale(0.985);
-    box-shadow: 8px 14px 38px rgba(39,44,49,.06), 1px 3px 8px rgba(39,44,49,.03);
-  }
-}
-.white {
-  background: #ffffff;
+  box-shadow: 0 0 1px rgba(39,44,49,.1), 0 3px 16px rgba(39,44,49,.07);
+  transition: all .3s ease;
+  transform: translate3D(0,-1px,0);
 }
 .jumbotron {
   background-color: #eceeef;
