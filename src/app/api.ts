@@ -32,7 +32,7 @@ export class Api {
     return this.http
       .get<Play[]>(`${this.url}/channel/${channelName}`, { params: params })
       .map(res => res.map(n => {
-        this.trackCache[n.trackId] = Observable.of(n.track);
+        this.trackCache[n.trackId] = n.track;
         return n;
       }))
       .catch(this.handleError);
@@ -41,27 +41,24 @@ export class Api {
   /* returns cache of track without activity or gets with activity */
   getTrack(trackId: number): Observable<Track> {
     if (!this.trackCache[trackId]) {
-      this.trackCache[trackId] = this.http
+      return this.http
         .get(`${this.url}/track/${trackId}`)
+        .map(res => {
+          this.trackCache[trackId] = res;
+          return res;
+        })
         .catch(() => {
           return Observable.of(null);
         })
         .publishReplay()
         .refCount();
     }
-    return this.trackCache[trackId];
+    return Observable.of(this.trackCache[trackId]);
   }
-
   /* gets only missing activity */
   getActivity(trackId: number) {
     return this.http
       .get(`${this.url}/trackActivity/${trackId}`)
-      .catch(this.handleError);
-  }
-
-  mostHeard(channelName: string): Observable<any[]> {
-    return this.http
-      .get(`${this.url}/mostHeard/${channelName}`)
       .catch(this.handleError);
   }
   getArtist(channelName: string, id: number) {
@@ -83,7 +80,7 @@ export class Api {
     return this.http
       .get<Track[]>(`${this.url}/popular/${channelName}`)
       .map(res => res.map(n => {
-        this.trackCache[n.id] = Observable.of(n);
+        this.trackCache[n.id] = n;
         return n;
       }))
       .catch(this.handleError);
