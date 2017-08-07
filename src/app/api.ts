@@ -71,7 +71,7 @@ export class Api {
     return this.http
       .get<Track[]>(`${this.url}/newest/${channelName}`)
       .map(res => res.map(n => {
-        this.trackCache[n.id] = Observable.of(n);
+        this.trackCache[n.id] = n;
         return n;
       }))
       .catch(this.handleError);
