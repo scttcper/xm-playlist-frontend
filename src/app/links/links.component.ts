@@ -9,25 +9,26 @@ import { Spotify } from '../app.interfaces';
   selector: 'xm-links',
   template: `
   <div class="links m-2">
-    <a [routerLink]="['/station', channel, 'track', trackId]" *ngIf="!hideTrack" class="btn btn-secondary info" role="button">
+    <a [routerLink]="['/station', channel, 'track', trackId]" *ngIf="!hideTrack" class="btn btn-default info" role="button">
       <i class="fa fa-info-circle"></i>
     </a>
     <!--
-    <a [href]="hypem" target="_blank" class="btn btn-secondary hypem" role="button">
+    <a [href]="hypem" target="_blank" class="btn btn-default hypem" role="button">
       <i class="fa fa-heart"></i>
     </a>
     -->
-    <a [href]="youtube" target="_blank" class="btn btn-secondary youtube" role="button">
+    <a [href]="youtube" target="_blank" class="btn btn-default youtube" role="button">
       <i class="fa fa-youtube-play"></i>
     </a>
-    <a [href]="spotifyLink" *ngIf="spotifyLink" target="_blank" class="btn btn-secondary spotify" role="button">
+    <a [href]="spotifyLink" *ngIf="spotifyLink" target="_blank" class="btn btn-default spotify" role="button">
       <i class="fa fa-spotify"></i>
     </a>
   </div>
   `,
   styles: [`
-  .btn-secondary {
-    border-color: #fff;
+  .btn-default {
+    color: #212529;
+    border-color: #eee;
   }
   .youtube:hover {
     background-color: #e52d27;

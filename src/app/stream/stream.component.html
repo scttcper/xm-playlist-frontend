@@ -4,7 +4,7 @@
       <div class="col-sm-6 col-lg-4 col-xl-3" *ngFor="let play of stream; trackBy: trackById" style="margin-bottom:30px">
         <div class="card h-100">
           <xm-coverart [spotify]="play.track.spotify"></xm-coverart>
-          <div class="card-block">
+          <div class="card-body">
             <p class="card-text">
               <small class="text-muted">
                 <xm-time-since [date]="play.startTime"></xm-time-since>

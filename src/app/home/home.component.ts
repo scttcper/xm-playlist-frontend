@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
     this.api.getChannels().subscribe((res) => {
       this.allChannels = res;
       this.channels = res;
-      this.genres = _.uniq(res.map(n => n.genre));
+      this.genres = _.uniq(res.map(n => n.genre)).sort();
       this.applyFilter();
     });
     this.route.queryParamMap.subscribe((q) => {

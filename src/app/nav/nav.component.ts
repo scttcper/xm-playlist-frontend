@@ -21,6 +21,7 @@ import { Channel } from '../app.interfaces';
     background: #242944;
   }
   .navbar-brand {
+    color: #fff;
     transition: all 0.2s linear;
     font-family: 'Gruppo', cursive, "Times New Roman", -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
   }

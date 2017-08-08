@@ -10,9 +10,14 @@ import { Channel } from '../app.interfaces';
 @Component({
   selector: 'xm-station',
   template: `
-  <nav class="navbar navbar-light bg-faded navbar-toggleable mb-3">
+  <nav class="navbar navbar-expand-md navbar-light bg-light mb-3">
     <div class="container">
       <a class="navbar-brand" routerLink="./">{{channel?.name}}</a>
+      <button class="navbar-toggler" type="button" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation" (click)="isCollapsed = !isCollapsed">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" [ngbCollapse]="isCollapsed">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
           <a class="nav-link" routerLink="./" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
@@ -40,15 +45,22 @@ import { Channel } from '../app.interfaces';
           </a>
         </li>
       </ul>
+      </div>
     </div>
   </nav>
   <router-outlet></router-outlet>
   `,
-  styles: []
+  styles: [`
+    .container {
+      padding-right: 15px;
+      padding-left: 15px;
+    }
+  `]
 })
 export class StationComponent implements OnInit {
   channel: Channel;
   spotifyLink: string;
+  isCollapsed = true;
 
   constructor(
     private api: Api,
