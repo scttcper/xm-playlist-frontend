@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { Api } from '../api';
-import { Channel } from '../app.interfaces';
 
 @Component({
   selector: 'xm-nav',
