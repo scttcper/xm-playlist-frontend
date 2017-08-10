@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Title, Meta } from '@angular/platform-browser';
 
-import * as _ from 'lodash';
+import { matchesProperty, last } from 'lodash';
+import { Channel, channels } from 'xm-playlist/src/channels';
 
 import { Api } from '../api';
-import { Channel, Play } from '../app.interfaces';
+import { Play } from '../app.interfaces';
 
 @Component({
   selector: 'xm-stream',
@@ -39,14 +40,11 @@ export class StreamComponent implements OnInit {
       this.end = false;
       this.streams = [];
       this.getRecentPage(params['channelName']);
-      this.api.getChannels()
-        .subscribe((res) => {
-          const chan = _.find(res, _.matchesProperty('id', params['channelName']));
-          this.channel = chan;
-          this.title.setTitle(`${chan.name} recently played - xmplaylist.com`);
-          this.meta.updateTag({ id: 'og:title', content: `${chan.name} recently played` });
-          this.meta.updateTag({ id: 'og:image', url: `/assets/img/${chan.id}.png` });
-        });
+        const chan = channels.find(matchesProperty('id', params['channelName']));
+        this.channel = chan;
+        this.title.setTitle(`${chan.name} recently played - xmplaylist.com`);
+        this.meta.updateTag({ id: 'og:title', content: `${chan.name} recently played` });
+        this.meta.updateTag({ id: 'og:image', url: `/assets/img/${chan.id}.png` });
     });
   }
   getRecentPage(channelName: string) {
@@ -61,7 +59,7 @@ export class StreamComponent implements OnInit {
         if (recent.length === 0) {
           this.end = true;
         }
-        this.lastLoaded = _.last(recent);
+        this.lastLoaded = last(recent);
         this.loading = false;
       });
   }

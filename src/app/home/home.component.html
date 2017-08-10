@@ -7,7 +7,8 @@
     <div class="col-12 text-center">
       <div class="d-inline" *ngFor="let genre of genres">
         <button class="btn btn-secondary mb-2"
-          (click)="setGenre(genre)" [class.active]="curGenre === genre" role="button" type="button">
+          (click)="setGenre(genre)" [class.active]="curGenre === genre"
+          role="button" type="button">
           {{ genre }}
         </button>
       </div>

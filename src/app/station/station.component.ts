@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import * as _ from 'lodash';
+import { matchesProperty } from 'lodash';
+import { Channel, channels } from 'xm-playlist/src/channels';
 
 import { Api } from '../api';
-import { Channel } from '../app.interfaces';
 
 
 @Component({
@@ -69,12 +69,8 @@ export class StationComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
-      this.api.getChannels()
-        .subscribe((res) => {
-          const chan = _.find(res, _.matchesProperty('id', params['channelName']));
-          this.channel = chan;
-          this.spotifyLink = `https://open.spotify.com/user/xmplaylist/playlist/${chan.playlist}`;
-        });
+      this.channel = channels.find(matchesProperty('id', params['channelName']));
+      this.spotifyLink = `https://open.spotify.com/user/xmplaylist/playlist/${this.channel.playlist}`;
     });
   }
 

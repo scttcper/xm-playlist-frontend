@@ -3,10 +3,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
 import { Observable } from 'rxjs/Observable';
-import * as _ from 'lodash';
+import { uniq } from 'lodash';
+import { Channel, channels } from 'xm-playlist/src/channels';
 
 import { Api } from '../api';
-import { Channel } from '../app.interfaces';
 
 @Component({
   selector: 'xm-home',
@@ -14,9 +14,9 @@ import { Channel } from '../app.interfaces';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  allChannels: Channel[] = [];
-  channels: Channel[] = [];
-  genres: string[] = [];
+  allChannels = channels;
+  channels = channels;
+  genres: string[] = uniq(channels.map(n => n.genre)).sort();
   curGenre: string;
 
   constructor(
@@ -28,12 +28,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.title.setTitle('xmplaylist - XM and Sirius radio recently played');
-    this.api.getChannels().subscribe((res) => {
-      this.allChannels = res;
-      this.channels = res;
-      this.genres = _.uniq(res.map(n => n.genre)).sort();
-      this.applyFilter();
-    });
+    this.applyFilter();
     this.route.queryParamMap.subscribe((q) => {
       this.curGenre = q.get('genre');
       this.applyFilter();

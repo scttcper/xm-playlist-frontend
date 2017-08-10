@@ -3,8 +3,10 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 
+import { Channel } from 'xm-playlist/src/channels';
+
 import { environment } from '../environments/environment';
-import { Channel, Play, Spotify, Track } from './app.interfaces';
+import { Play, Spotify, Track } from './app.interfaces';
 
 @Injectable()
 export class Api {
@@ -13,16 +15,6 @@ export class Api {
   private trackCache: any = {};
 
   constructor(private http: HttpClient) { }
-
-  getChannels(): Observable<Channel[]> {
-    if (!this.channelCache)  {
-      this.channelCache = this.http
-        .get<Channel[]>(`${this.url}/channels`)
-        .publishReplay()
-        .refCount();
-    }
-    return this.channelCache;
-  }
 
   getChannel(channelName: string, last?: Play): Observable<Play[]> {
     let params = new HttpParams();

@@ -4,10 +4,11 @@ import { Title } from '@angular/platform-browser';
 
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
-import * as _ from 'lodash';
+import { matchesProperty } from 'lodash';
+import { Channel, channels } from 'xm-playlist/src/channels';
 
 import { Api } from '../api';
-import { Channel, Play } from '../app.interfaces';
+import { Play } from '../app.interfaces';
 
 
 @Component({
@@ -27,10 +28,7 @@ export class ArtistComponent implements OnInit {
 
   ngOnInit() {
     this.route.parent.params.subscribe((params) => {
-      this.api.getChannels()
-        .subscribe((res) => {
-          this.channel = _.find(res, _.matchesProperty('id', params['channelName']));
-        });
+      this.channel = channels.find(matchesProperty('id', params['channelName']));
     });
     this.route.params.subscribe(() => this.refresh());
   }

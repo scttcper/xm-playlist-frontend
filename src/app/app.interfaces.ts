@@ -1,13 +1,3 @@
-export interface Channel {
-  id: string;
-  name: string;
-  number: number;
-  genre: string;
-  desc: string;
-  img: string;
-  playlist: string;
-}
-
 export interface Play {
   id: number;
   trackId: string;
