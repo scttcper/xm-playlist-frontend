@@ -28,7 +28,7 @@
     "font-awesome": "^4.7.0",
     "lodash": "^4.17.4",
     "ngx-infinite-scroll": "^0.5.1",
-    "ngx-trend": "1.1.0",
+    "ngx-trend": "1.1.2",
     "rxjs": "^5.4.3",
     "spinthatshit": "^1.0.3",
     "ts-helpers": "^1.1.2",
