@@ -41,7 +41,6 @@ import { Spotify } from '../app.interfaces';
   }
   .btn:hover {
     box-shadow: 8px 14px 38px rgba(39,44,49,.06), 1px 3px 8px rgba(39,44,49,.03);
-    transform: scale(0.9);
   }
   `]
 })

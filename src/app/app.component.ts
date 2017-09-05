@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Angulartics2GoogleAnalytics } from 'angulartics2';
 
 @Component({
   selector: 'xm-root',
@@ -9,5 +8,4 @@ import { Angulartics2GoogleAnalytics } from 'angulartics2';
   `,
 })
 export class AppComponent {
-  constructor(angulartics2GoogleAnalytics: Angulartics2GoogleAnalytics) { }
 }
