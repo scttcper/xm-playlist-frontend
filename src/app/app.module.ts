@@ -7,6 +7,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { TrendModule } from 'ngx-trend';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { Angulartics2Module } from 'angulartics2';
+import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 
 import { AppComponent } from './app.component';
 import { StreamComponent } from './stream/stream.component';
@@ -68,6 +70,7 @@ export const routes: Routes = [
     InfiniteScrollModule,
     TrendModule,
     NgbCollapseModule,
+    Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
 
     XmUtility,
   ],
