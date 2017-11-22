@@ -25,7 +25,6 @@ import { NewestComponent } from './newest/newest.component';
 import { PopularComponent } from './popular/popular.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 
-
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   {

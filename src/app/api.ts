@@ -3,10 +3,9 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 
-import { Channel } from 'xm-playlist/src/channels';
-
 import { environment } from '../environments/environment';
 import { Play, Spotify, Track } from './app.interfaces';
+import { Channel } from './channels';
 
 @Injectable()
 export class Api {

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { matchesProperty } from 'lodash';
-import { Channel, channels } from 'xm-playlist/src/channels';
+import { Channel, channels } from '../channels';
 
 import { Api } from '../api';
 

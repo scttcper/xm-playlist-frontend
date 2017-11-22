@@ -5,10 +5,10 @@ import { Title } from '@angular/platform-browser';
 import { Subscription } from 'rxjs/Subscription';
 import { Observable } from 'rxjs/Observable';
 import { matchesProperty } from 'lodash';
-import { Channel, channels } from 'xm-playlist/src/channels';
 
 import { Api } from '../api';
 import { Play } from '../app.interfaces';
+import { Channel, channels } from '../channels';
 
 
 @Component({

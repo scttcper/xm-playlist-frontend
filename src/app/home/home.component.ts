@@ -4,7 +4,7 @@ import { Title } from '@angular/platform-browser';
 
 import { Observable } from 'rxjs/Observable';
 import { uniq } from 'lodash';
-import { Channel, channels } from 'xm-playlist/src/channels';
+import { Channel, channels } from '../channels';
 
 import { Api } from '../api';
 
