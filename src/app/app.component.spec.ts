@@ -1,29 +1,29 @@
 /* tslint:disable:no-unused-variable */
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/publishReplay';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/throw';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/publishReplay';
 
-import { TestBed, async } from '@angular/core/testing';
-import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http';
-import { Routes, RouterModule } from '@angular/router';
 import { APP_BASE_HREF } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { async, TestBed } from '@angular/core/testing';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule, Routes } from '@angular/router';
 
-import { TrendModule } from 'ngx-trend';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { TrendModule } from 'ngx-trend';
 
-import { AppComponent } from './app.component';
-import { StreamComponent } from './stream/stream.component';
-import { HomeComponent } from './home/home.component';
 import { Api } from './api';
-import { NavComponent } from './nav/nav.component';
-import { XmUtility } from './util';
-import { CoverartComponent } from './coverart/coverart.component';
-import { LinksComponent } from './links/links.component';
-import { TrackComponent } from './track/track.component';
+import { AppComponent } from './app.component';
 import { ArtistComponent } from './artist/artist.component';
+import { CoverartComponent } from './coverart/coverart.component';
+import { HomeComponent } from './home/home.component';
+import { LinksComponent } from './links/links.component';
+import { NavComponent } from './nav/nav.component';
+import { StreamComponent } from './stream/stream.component';
+import { TrackComponent } from './track/track.component';
+import { XmUtility } from './util';
 
 import { routes } from './app.module';
 
@@ -42,7 +42,7 @@ describe('AppComponent', () => {
       ],
       imports: [
         BrowserModule,
-        HttpModule,
+        HttpClientModule,
         RouterModule.forRoot(routes),
 
         InfiniteScrollModule,

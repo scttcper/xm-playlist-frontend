@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
+import { ActivatedRoute, Router } from '@angular/router';
 
-import { Observable } from 'rxjs/Observable';
-import { uniq } from 'lodash';
-import { Channel, channels } from '../channels';
+import { uniq } from 'lodash-es';
 
-import { Api } from '../api';
+import { channels } from '../channels';
 
 @Component({
   selector: 'xm-home',
@@ -20,16 +18,15 @@ export class HomeComponent implements OnInit {
   curGenre: string;
 
   constructor(
-    private api: Api,
     private router: Router,
     private route: ActivatedRoute,
     private title: Title,
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.title.setTitle('xmplaylist - XM and Sirius radio recently played');
     this.applyFilter();
-    this.route.queryParamMap.subscribe((q) => {
+    this.route.queryParamMap.subscribe(q => {
       this.curGenre = q.get('genre');
       this.applyFilter();
     });
@@ -41,8 +38,7 @@ export class HomeComponent implements OnInit {
     if (!this.curGenre) {
       this.channels = this.allChannels;
     } else {
-      this.channels = this.allChannels
-        .filter(n => n.genre === this.curGenre);
+      this.channels = this.allChannels.filter(n => n.genre === this.curGenre);
     }
   }
   setGenre(genre: string) {
@@ -53,8 +49,6 @@ export class HomeComponent implements OnInit {
       return;
     }
     this.curGenre = genre;
-    this.router.navigate([], { queryParams: { genre }});
+    this.router.navigate([], { queryParams: { genre } });
   }
-
-
 }

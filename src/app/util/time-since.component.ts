@@ -1,5 +1,5 @@
-import { Component, OnDestroy, Input, OnChanges } from '@angular/core';
-import { formatDistance, differenceInDays } from 'date-fns';
+import { Component, Input, OnChanges, OnDestroy } from '@angular/core';
+import { differenceInDays, formatDistance } from 'date-fns';
 
 @Component({
   selector: 'xm-time-since',

@@ -3,7 +3,7 @@ import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Params } from '@angular/router';
 
 import { Api } from '../api';
-import { Track, Spotify } from '../app.interfaces';
+import { Spotify, Track } from '../app.interfaces';
 
 @Component({
   selector: 'xm-track',

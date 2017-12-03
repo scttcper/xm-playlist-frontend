@@ -1,16 +1,15 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Injectable } from '@angular/core';
+
 import { Observable } from 'rxjs/Observable';
+import { map } from 'rxjs/operators/map';
 
 import { environment } from '../environments/environment';
-import { Play, Spotify, Track } from './app.interfaces';
-import { Channel } from './channels';
+import { Play, Track } from './app.interfaces';
 
 @Injectable()
 export class Api {
   private url: string = environment.api;
-  private channelCache: Observable<Channel[]>;
   private trackCache: any = {};
 
   constructor(private http: HttpClient) { }
@@ -22,10 +21,10 @@ export class Api {
     }
     return this.http
       .get<Play[]>(`${this.url}/channel/${channelName}`, { params: params })
-      .map(res => res.map(n => {
+      .pipe(map(res => res.map(n => {
         this.trackCache[n.trackId] = n.track;
         return n;
-      }))
+      })))
       .catch(this.handleError);
   }
 
@@ -34,10 +33,10 @@ export class Api {
     if (!this.trackCache[trackId]) {
       return this.http
         .get(`${this.url}/track/${trackId}`)
-        .map(res => {
+        .pipe(map(res => {
           this.trackCache[trackId] = res;
           return res;
-        })
+        }))
         .catch(() => {
           return Observable.of(null);
         })
@@ -61,19 +60,19 @@ export class Api {
   getNewest(channelName: string): Observable<Track[]> {
     return this.http
       .get<Track[]>(`${this.url}/newest/${channelName}`)
-      .map(res => res.map(n => {
+      .pipe(map(res => res.map(n => {
         this.trackCache[n.id] = n;
         return n;
-      }))
+      })))
       .catch(this.handleError);
   }
   getPopular(channelName: string): Observable<Track[]> {
     return this.http
       .get<Track[]>(`${this.url}/popular/${channelName}`)
-      .map(res => res.map(n => {
+      .pipe(map(res => res.map(n => {
         this.trackCache[n.id] = n;
         return n;
-      }))
+      })))
       .catch(this.handleError);
   }
 

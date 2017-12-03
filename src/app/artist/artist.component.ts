@@ -1,14 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterStateSnapshot } from '@angular/router';
 import { Title } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
 
-import { Subscription } from 'rxjs/Subscription';
-import { Observable } from 'rxjs/Observable';
-import { matchesProperty } from 'lodash';
+import { matchesProperty } from 'lodash-es';
 
 import { Api } from '../api';
-import { Play } from '../app.interfaces';
-import { Channel, channels } from '../channels';
+import { channels, Channel } from '../channels';
 
 
 @Component({

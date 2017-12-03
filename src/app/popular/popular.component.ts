@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { Track } from '../app.interfaces';
 import { Api } from '../api';
+import { Track } from '../app.interfaces';
 
 
 @Component({

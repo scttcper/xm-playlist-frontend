@@ -1,29 +1,29 @@
+import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
-import { TrendModule } from 'ngx-trend';
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { TrendModule } from 'ngx-trend';
 
-import { AppComponent } from './app.component';
-import { StreamComponent } from './stream/stream.component';
-import { HomeComponent } from './home/home.component';
 import { Api } from './api';
-import { NavComponent } from './nav/nav.component';
-import { XmUtility } from './util';
-import { CoverartComponent } from './coverart/coverart.component';
-import { LinksComponent } from './links/links.component';
-import { TrackComponent } from './track/track.component';
+import { AppComponent } from './app.component';
 import { ArtistComponent } from './artist/artist.component';
-import { StationComponent } from './station/station.component';
+import { CoverartComponent } from './coverart/coverart.component';
+import { HomeComponent } from './home/home.component';
+import { LinksComponent } from './links/links.component';
+import { NavComponent } from './nav/nav.component';
 import { NewestComponent } from './newest/newest.component';
 import { PopularComponent } from './popular/popular.component';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { StationComponent } from './station/station.component';
+import { StreamComponent } from './stream/stream.component';
+import { TrackComponent } from './track/track.component';
+import { XmUtility } from './util';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },

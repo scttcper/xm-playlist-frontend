@@ -5,7 +5,7 @@
       <div class="card mb-4">
         <xm-coverart [spotify]="track.spotify"></xm-coverart>
         <div class="card-body">
-          <h4 class="card-title">{{track.name}}</h4>
+          <h4 class="card-title">{{ track.name }}</h4>
           <a [routerLink]="['../../artist', artist.id]" class="card-link" *ngFor="let artist of track.artists">
             {{ artist.name }}
           </a>
@@ -36,7 +36,7 @@
         <ul class="list-group list-group-flush">
           <li class="list-group-item">
             <p class="mb-0">
-              <i class="fa fa-spotify"></i> Spotify - <a [href]="spotifyLink">{{spotify?.spotifyId}}</a>
+              <i class="fa fa-spotify"></i> Spotify - <a [href]="spotifyLink">{{ spotify?.spotifyId }}</a>
             </p>
           </li>
           <li class="list-group-item">

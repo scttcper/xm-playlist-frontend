@@ -1,19 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { matchesProperty } from 'lodash';
-import { Channel, channels } from '../channels';
-
-import { Api } from '../api';
-
+import { matchesProperty } from 'lodash-es';
+import { channels, Channel } from '../channels';
 
 @Component({
   selector: 'xm-station',
   template: `
   <nav class="navbar navbar-expand-md navbar-light bg-light mb-3">
     <div class="container">
-      <a class="navbar-brand" routerLink="./">{{channel?.name}}</a>
-      <button class="navbar-toggler" type="button" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation" (click)="isCollapsed = !isCollapsed">
+      <a class="navbar-brand" routerLink="./">{{ channel?.name }}</a>
+      <button class="navbar-toggler" type="button"
+        aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation"
+        (click)="isCollapsed = !isCollapsed">
         <span class="navbar-toggler-icon"></span>
       </button>
 
@@ -50,28 +49,30 @@ import { Api } from '../api';
   </nav>
   <router-outlet></router-outlet>
   `,
-  styles: [`
+  styles: [
+    `
     .container {
       padding-right: 15px;
       padding-left: 15px;
     }
-  `]
+  `,
+  ],
 })
 export class StationComponent implements OnInit {
   channel: Channel;
   spotifyLink: string;
   isCollapsed = true;
 
-  constructor(
-    private api: Api,
-    private route: ActivatedRoute,
-  ) { }
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
-    this.route.params.subscribe((params) => {
-      this.channel = channels.find(matchesProperty('id', params['channelName']));
-      this.spotifyLink = `https://open.spotify.com/user/xmplaylist/playlist/${this.channel.playlist}`;
+    this.route.params.subscribe(params => {
+      this.channel = channels.find(
+        matchesProperty('id', params['channelName']),
+      );
+      this.spotifyLink = `https://open.spotify.com/user/xmplaylist/playlist/${
+        this.channel.playlist
+      }`;
     });
   }
-
 }

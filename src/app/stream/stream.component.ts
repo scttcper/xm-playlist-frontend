@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
-import { Title, Meta } from '@angular/platform-browser';
 
-import { matchesProperty, last } from 'lodash';
-import { Channel, channels } from '../channels';
+import { last, matchesProperty } from 'lodash-es';
+import { channels, Channel } from '../channels';
 
 import { Api } from '../api';
 import { Play } from '../app.interfaces';
@@ -20,7 +20,6 @@ export class StreamComponent implements OnInit {
   loading = false;
   private page = 0;
   private lastLoaded: Play;
-  private oldChannel = '';
 
   constructor(
     private api: Api,
