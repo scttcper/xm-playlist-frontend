@@ -40,7 +40,7 @@ import { channels, Channel } from '../channels';
       <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link" [href]="spotifyLink" target="_blank">
-            <i class="fa fa-spotify" aria-hidden="true"></i> Listen On Spotify
+            <i class="fab fa-spotify" aria-hidden="true"></i> Listen On Spotify
           </a>
         </li>
       </ul>

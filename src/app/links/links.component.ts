@@ -9,7 +9,7 @@ import { Spotify } from '../app.interfaces';
   <div class="links m-2">
     <a [routerLink]="['/station', channel, 'track', trackId]"
       *ngIf="!hideTrack" class="btn btn-default info mr-1" role="button">
-      <i class="fa fa-info-circle"></i>
+      <i class="fas fa-info-circle"></i>
     </a>
     <!--
     <a [href]="hypem" target="_blank" class="btn btn-default hypem" role="button">
@@ -17,11 +17,11 @@ import { Spotify } from '../app.interfaces';
     </a>
     -->
     <a [href]="youtube" target="_blank" class="btn btn-default youtube mr-1" role="button">
-      <i class="fa fa-youtube-play"></i>
+      <i class="fab fa-youtube"></i>
     </a>
     <a [href]="spotifyLink" *ngIf="spotifyLink" target="_blank"
       class="btn btn-default spotify mr-1" role="button">
-      <i class="fa fa-spotify"></i>
+      <i class="fab fa-spotify"></i>
     </a>
   </div>
   `,
