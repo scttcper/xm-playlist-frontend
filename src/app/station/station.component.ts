@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { matchesProperty } from 'lodash-es';
+
 import { channels, Channel } from '../channels';
 
 @Component({
