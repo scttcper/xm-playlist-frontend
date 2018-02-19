@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  api: 'https://api.xmplaylist.com'
+  api: 'http://localhost:5000'
 };

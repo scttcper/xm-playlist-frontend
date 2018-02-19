@@ -71,7 +71,7 @@ export class LinksComponent implements OnInit {
     this.hypem = `http://hypem.com/search/${str}/1/?sortby=favorite`;
     this.youtube = `https://www.youtube.com/results?search_query=${str}`;
     if (this.spotify) {
-      this.spotifyLink = `https://open.spotify.com/track/${this.spotify.id}`;
+      this.spotifyLink = `https://open.spotify.com/track/${this.spotify.spotifyId}`;
     }
   }
 }
