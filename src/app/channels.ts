@@ -499,13 +499,13 @@ export const channels: Channel[] = [
   //   genre: 'Jazz/Standards',
   //   desc: 'Smooth/Contemporary Jazz',
   // },
-  // {
-  //   id: 'purejazz',
-  //   number: 67,
-  //   name: 'Real Jazz',
-  //   genre: 'Jazz/Standards',
-  //   desc: 'Classic Jazz',
-  // },
+  {
+    id: 'purejazz',
+    number: 67,
+    name: 'Real Jazz',
+    genre: 'Jazz/Standards',
+    desc: 'Classic Jazz',
+  },
   // {
   //   id: 'spa73',
   //   number: 68,
@@ -555,13 +555,13 @@ export const channels: Channel[] = [
   //   genre: 'Classical',
   //   desc: 'Opera/Classical Voices',
   // },
-  // {
-  //   id: 'symphonyhall',
-  //   number: 76,
-  //   name: 'Symphony Hall',
-  //   genre: 'Classical',
-  //   desc: 'Classical Music',
-  // },
+  {
+    id: 'symphonyhall',
+    number: 76,
+    name: 'Symphony Hall',
+    genre: 'Classical',
+    desc: 'Classical Music',
+  },
   // {
   //   id: 'rumbon',
   //   number: 158,
