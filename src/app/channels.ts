@@ -5,8 +5,7 @@ export interface Channel {
   number: number;
   genre: string;
   desc: string;
-  img?: string;
-  playlist?: string;
+  playlist: string;
 }
 export const channels: Channel[] = [
   {
@@ -505,6 +504,7 @@ export const channels: Channel[] = [
     name: 'Real Jazz',
     genre: 'Jazz/Standards',
     desc: 'Classic Jazz',
+    playlist: '3mDuSPlntj533CvZXvMnDS',
   },
   // {
   //   id: 'spa73',
@@ -561,6 +561,7 @@ export const channels: Channel[] = [
     name: 'Symphony Hall',
     genre: 'Classical',
     desc: 'Classical Music',
+    playlist: '4KdXsNll67tp8qsp8wT0jF',
   },
   // {
   //   id: 'rumbon',
