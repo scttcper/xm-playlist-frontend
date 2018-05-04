@@ -1,8 +1,12 @@
+import {
+  of as observableOf,
+  throwError as observableThrowError,
+  Observable,
+} from 'rxjs';
+
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
-import { Observable } from 'rxjs/Observable';
-import { map } from 'rxjs/operators/map';
+import { catchError, map, publishReplay, refCount } from 'rxjs/operators';
 
 import { environment } from '../environments/environment';
 import { Play, Track } from './app.interfaces';
@@ -12,7 +16,7 @@ export class Api {
   private url: string = environment.api;
   private trackCache: any = {};
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getChannel(channelName: string, last?: Play): Observable<Play[]> {
     let params = new HttpParams();
@@ -21,62 +25,73 @@ export class Api {
     }
     return this.http
       .get<Play[]>(`${this.url}/channel/${channelName}`, { params: params })
-      .pipe(map(res => res.map(n => {
-        this.trackCache[n.trackId] = n.track;
-        return n;
-      })))
-      .catch(this.handleError);
+      .pipe(
+        catchError(this.handleError),
+        map(res =>
+          res.map(n => {
+            this.trackCache[n.trackId] = n.track;
+            return n;
+          }),
+        ),
+      );
   }
 
   /* returns cache of track without activity or gets with activity */
   getTrack(trackId: number): Observable<Track> {
     if (!this.trackCache[trackId]) {
       return this.http
-        .get(`${this.url}/track/${trackId}`)
-        .pipe(map(res => {
-          this.trackCache[trackId] = res;
-          return res;
-        }))
-        .catch(() => {
-          return Observable.of(null);
-        })
-        .publishReplay()
-        .refCount();
+        .get<any>(`${this.url}/track/${trackId}`)
+        .pipe(
+          catchError(() => {
+            return observableOf(null);
+          }),
+          map(res => {
+            this.trackCache[trackId] = res;
+            return res;
+          }),
+          publishReplay(),
+          refCount(),
+        );
     }
-    return Observable.of(this.trackCache[trackId]);
+    return observableOf(this.trackCache[trackId]);
   }
   /* gets only missing activity */
   getActivity(trackId: number) {
     return this.http
-      .get(`${this.url}/trackActivity/${trackId}`)
-      .catch(this.handleError);
+      .get<any>(`${this.url}/trackActivity/${trackId}`)
+      .pipe(catchError(this.handleError));
   }
   getArtist(channelName: string, id: number) {
     const params = new HttpParams().set('channel', channelName);
     return this.http
-      .get(`${this.url}/artist/${id}`, { params })
-      .catch(this.handleError);
+      .get<any>(`${this.url}/artist/${id}`, { params })
+      .pipe(catchError(this.handleError));
   }
   getNewest(channelName: string): Observable<Track[]> {
-    return this.http
-      .get<Track[]>(`${this.url}/newest/${channelName}`)
-      .pipe(map(res => res.map(n => {
-        this.trackCache[n.id] = n;
-        return n;
-      })))
-      .catch(this.handleError);
+    return this.http.get<Track[]>(`${this.url}/newest/${channelName}`).pipe(
+      catchError(this.handleError),
+      map(res =>
+        res.map(n => {
+          this.trackCache[n.id] = n;
+          return n;
+        }),
+      ),
+    );
   }
   getPopular(channelName: string): Observable<Track[]> {
-    return this.http
-      .get<Track[]>(`${this.url}/popular/${channelName}`)
-      .pipe(map(res => res.map(n => {
-        this.trackCache[n.id] = n;
-        return n;
-      })))
-      .catch(this.handleError);
+    return this.http.get<Track[]>(`${this.url}/popular/${channelName}`).pipe(
+      catchError(this.handleError),
+      map(
+        res =>
+          res.map(n => {
+            this.trackCache[n.id] = n;
+            return n;
+          }),
+      ),
+    );
   }
 
-  private handleError (error: Response | any) {
+  private handleError(error: Response | any) {
     let errMsg: string;
     if (error instanceof Response) {
       const err = error.text() || '';
@@ -85,7 +100,6 @@ export class Api {
       errMsg = error.message ? error.message : error.toString();
     }
     console.error(errMsg);
-    return Observable.throw(errMsg);
+    return observableThrowError(errMsg);
   }
-
 }
