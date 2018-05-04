@@ -1,10 +1,4 @@
 /* tslint:disable:no-unused-variable */
-import 'rxjs/add/observable/of';
-import 'rxjs/add/observable/throw';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/publishReplay';
-
 import { APP_BASE_HREF } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { async, TestBed } from '@angular/core/testing';
@@ -28,7 +22,7 @@ import { XmUtility } from './util';
 import { routes } from './app.module';
 
 describe('AppComponent', () => {
-  beforeEach(() => {
+  beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
@@ -55,7 +49,7 @@ describe('AppComponent', () => {
         { provide: APP_BASE_HREF, useValue: '/' },
       ],
     }).compileComponents();
-  });
+  }));
 
   it('should create the app', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
