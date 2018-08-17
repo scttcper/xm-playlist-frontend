@@ -4,11 +4,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 
+import { ChartjsModule } from '@ctrl/ngx-chartjs';
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { Angulartics2Module } from 'angulartics2';
 import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-import { TrendModule } from 'ngx-trend';
 
 import { Api } from './api';
 import { AppComponent } from './app.component';
@@ -66,6 +66,7 @@ export const routes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(routes),
 
+    ChartjsModule,
     InfiniteScrollModule,
     TrendModule,
     NgbCollapseModule,

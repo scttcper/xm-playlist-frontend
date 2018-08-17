@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { Api } from '../api';
-import { Track } from '../app.interfaces';
 
 
 @Component({
@@ -15,7 +14,7 @@ import { Track } from '../app.interfaces';
   `],
 })
 export class PopularComponent implements OnInit {
-  tracks: Track[];
+  tracks: any[];
 
   constructor(
     private api: Api,

@@ -21,9 +21,6 @@
               <xm-time-since [date]="track.updatedAt"></xm-time-since>
             </p>
           </li>
-          <li class="list-group-item">
-            <p class="m-0">Played - {{ track.plays | number }} times</p>
-          </li>
         </ul>
       </div>
     </div>
@@ -61,9 +58,9 @@
           <h4 class="card-title mb-1">Activity</h4>
           <p class="card-text"><small class="text-muted">Last 30 Days</small></p>
         </div>
-        <xm-spinner *ngIf="!playsByDay"></xm-spinner>
-        <div class="card-body p-1 text-center" *ngIf="playsByDay">
-          <ngx-trend smooth="true" autoDraw="true" autoDrawEasing="ease-in" [data]="playsByDay"></ngx-trend>
+        <xm-spinner *ngIf="!data.labels"></xm-spinner>
+        <div class="card-body p-0 text-center" *ngIf="data.labels">
+          <ngx-chartjs type="bar" [data]="data" height="250" [options]="options"></ngx-chartjs>
         </div>
       </div>
     </div>
