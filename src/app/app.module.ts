@@ -68,7 +68,6 @@ export const routes: Routes = [
 
     ChartjsModule,
     InfiniteScrollModule,
-    TrendModule,
     NgbCollapseModule,
     Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
 

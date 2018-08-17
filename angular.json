@@ -81,8 +81,7 @@
             "format": "stylish",
             "typeCheck": true,
             "tsConfig": [
-              "src/tsconfig.app.json",
-              "src/tsconfig.spec.json"
+              "src/tsconfig.app.json"
             ],
             "exclude": [
               "**/node_modules/**"
