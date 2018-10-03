@@ -22,10 +22,22 @@ export class TrackComponent implements OnInit {
   options = {
     maintainAspectRatio: false,
     scales: {
-      yAxes: [{ display: false, gridLines: { display: false }, ticks: { beginAtZero: true } }],
-      xAxes: [{ display: false, gridLines: { display: false }, ticks: { beginAtZero: true } }],
+      yAxes: [
+        {
+          display: false,
+          gridLines: { display: false },
+          ticks: { beginAtZero: true },
+        },
+      ],
+      xAxes: [
+        {
+          display: false,
+          gridLines: { display: false },
+          ticks: { beginAtZero: true },
+        },
+      ],
     },
-    legend: {display: false}
+    legend: { display: false },
   };
 
   constructor(
