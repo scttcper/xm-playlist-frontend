@@ -18,33 +18,33 @@ import { channels, Channel } from '../channels';
       </button>
 
       <div class="collapse navbar-collapse" [ngbCollapse]="isCollapsed">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="./" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-            Stream
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="./latest" routerLinkActive="active">
-            Newest
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="./popular" routerLinkActive="active">
-            Popular
-          </a>
-        <!-- </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Popular</a>
-        </li> -->
-      </ul>
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" [href]="spotifyLink" target="_blank">
-            <i class="fab fa-spotify" aria-hidden="true"></i> Listen On Spotify
-          </a>
-        </li>
-      </ul>
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="./" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+              Stream
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="./latest" routerLinkActive="active">
+              Newest
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="./popular" routerLinkActive="active">
+              Popular
+            </a>
+          <!-- </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Popular</a>
+          </li> -->
+        </ul>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" [href]="spotifyLink" target="_blank">
+              <i class="fab fa-spotify" aria-hidden="true"></i> Listen On Spotify
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
   </nav>

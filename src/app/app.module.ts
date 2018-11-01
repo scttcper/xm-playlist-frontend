@@ -7,8 +7,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { ChartjsModule } from '@ctrl/ngx-chartjs';
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { Angulartics2Module } from 'angulartics2';
-import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { AdsenseModule } from 'ng2-adsense';
 
 import { Api } from './api';
 import { AppComponent } from './app.component';
@@ -69,7 +69,11 @@ export const routes: Routes = [
     ChartjsModule,
     InfiniteScrollModule,
     NgbCollapseModule,
-    Angulartics2Module.forRoot([Angulartics2GoogleAnalytics]),
+    Angulartics2Module.forRoot(),
+    AdsenseModule.forRoot({
+      adClient: 'ca-pub-7640562161899788',
+      adSlot: 7259870550,
+    }),
 
     XmUtility,
   ],
