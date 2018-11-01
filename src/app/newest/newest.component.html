@@ -33,7 +33,7 @@
               <a [routerLink]="['../track', track.id]">{{ track.name }}</a>
             </td>
             <td>
-              <a [routerLink]="['../artist', artist.id]" class="mr-2" *ngFor="let artist of track.artists; trackBy: id">
+              <a [routerLink]="['../artist', artist.id]" class="mr-2" *ngFor="let artist of track.artists">
                 {{ artist.name }}
               </a>
             </td>
