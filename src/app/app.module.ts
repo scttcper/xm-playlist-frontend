@@ -7,8 +7,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { ChartjsModule } from '@ctrl/ngx-chartjs';
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { Angulartics2Module } from 'angulartics2';
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { AdsenseModule } from 'ng2-adsense';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import { Api } from './api';
 import { AppComponent } from './app.component';
@@ -41,7 +41,7 @@ export const routes: Routes = [
   {
     path: '**',
     redirectTo: '',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
 ];
 
@@ -64,7 +64,7 @@ export const routes: Routes = [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }),
 
     ChartjsModule,
     InfiniteScrollModule,
@@ -78,6 +78,6 @@ export const routes: Routes = [
     XmUtility,
   ],
   providers: [Api],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

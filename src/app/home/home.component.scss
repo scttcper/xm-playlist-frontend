@@ -1,31 +1,46 @@
 .card {
-  box-shadow: 8px 14px 38px rgba(39,44,49,.06), 1px 3px 8px rgba(39,44,49,.03);
-  transition: all .5s ease;
+  box-shadow: 8px 14px 38px rgba(39, 44, 49, 0.06),
+    1px 3px 8px rgba(39, 44, 49, 0.03);
+  transition: all 0.5s ease;
   cursor: pointer;
   .top {
-    transition: all 0.2s ease-in;
-    background: #242944;
+    background: darken(#20639b, 20%);
   }
 }
 .card:hover {
-  box-shadow: 0 0 1px rgba(39,44,49,.1), 0 3px 16px rgba(39,44,49,.07);
-  transition: all .3s ease;
-  transform: translate3D(0,-1px,0);
+  box-shadow: 0 0 1px rgba(39, 44, 49, 0.1), 0 3px 16px rgba(39, 44, 49, 0.07);
+  transform: translate3D(0, 8px, 0);
 }
+
 .jumbotron {
   background-color: #eceeef;
   border-radius: 0;
+  margin-bottom: 1em;
   h1 {
     font-weight: 600;
   }
+  .lead {
+    font-size: 1.4rem;
+  }
+  @media (max-width: 575.98px) {
+    h1 {
+      font-size: 3rem;
+    }
+    .lead {
+      font-size: 1rem;
+    }
+  }
 }
+
+
 .active {
-  background-color: #242944;
+  background-color: #20639b;
   color: #eceeef;
   border-color: #eceeef;
-  box-shadow: 8px 14px 38px rgba(39,44,49,.06), 1px 3px 8px rgba(39,44,49,.03);
+  box-shadow: 8px 14px 38px rgba(39, 44, 49, 0.06),
+    1px 3px 8px rgba(39, 44, 49, 0.03);
   transform: scale(0.985);
 }
 .active:hover {
-  background-color: lighten(#242944, 10%);
+  background-color: lighten(#20639b, 10%);
 }

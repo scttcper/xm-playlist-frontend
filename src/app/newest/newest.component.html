@@ -11,13 +11,13 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <table class="table">
+      <table class="table table-responsive">
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Artists</th>
-            <th>Plays</th>
-            <th>First Heard</th>
+            <th style="min-width: 150px">Name</th>
+            <th style="min-width: 150px">Artists</th>
+            <th width="0" class="text-center">Plays</th>
+            <th style="min-width: 110px">First Heard</th>
           </tr>
         </thead>
         <tbody class="text-center" *ngIf="!tracks">
@@ -37,7 +37,7 @@
                 {{ artist.name }}
               </a>
             </td>
-            <td>{{ track.plays }}</td>
+            <td class="text-center">{{ track.plays }}</td>
             <td><xm-time-since [date]="track.createdAt"></xm-time-since></td>
           </tr>
         </tbody>

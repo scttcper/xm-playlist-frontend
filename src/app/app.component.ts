@@ -5,7 +5,6 @@ import { Angulartics2GoogleAnalytics } from 'angulartics2/ga';
 @Component({
   selector: 'xm-root',
   template: `
-  <xm-nav></xm-nav>
   <router-outlet></router-outlet>
   `,
 })

@@ -8,6 +8,7 @@ import { channels, Channel } from '../channels';
 @Component({
   selector: 'xm-station',
   template: `
+  <xm-nav></xm-nav>
   <nav class="navbar navbar-expand-md navbar-light bg-light mb-3">
     <div class="container">
       <a class="navbar-brand" routerLink="./">{{ channel?.name }}</a>

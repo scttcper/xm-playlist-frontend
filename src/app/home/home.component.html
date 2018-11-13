@@ -1,13 +1,13 @@
 <div class="jumbotron text-center">
   <h1 class="display-3">xmplaylist</h1>
   <p class="lead">XM and Sirius radio recently played</p>
-  <ng-adsense></ng-adsense>
+  <ng-adsense class="d-none d-sm-block"></ng-adsense>
 </div>
 <div class="container">
   <div class="row mb-3">
     <div class="col-12 text-center">
       <div class="d-inline" *ngFor="let genre of genres">
-        <button class="btn btn-outline-dark mb-2 mr-1"
+        <button class="btn btn-light mb-2 mr-2"
           (click)="setGenre(genre)" [class.active]="curGenre === genre"
           role="button" type="button">
           {{ genre }}
