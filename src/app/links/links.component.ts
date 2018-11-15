@@ -28,7 +28,7 @@ import { Spotify } from '../app.interfaces';
   styles: [
     `
   .btn-default {
-    color: #20639b;
+    color: #33485a;
     border-color: #eeeeee;
   }
   .btn-default:hover {

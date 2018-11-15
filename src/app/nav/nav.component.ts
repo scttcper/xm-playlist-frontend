@@ -16,7 +16,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
         overflow-x: scroll;
       }
       .navbar {
-        background: #20639b;
+        background: #33485a;
       }
       .navbar-brand {
         transition: all 0.2s ease-in;
