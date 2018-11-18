@@ -1,6 +1,10 @@
-<div class="mb-3 text-center"><ng-adsense></ng-adsense></div>
 <xm-spinner *ngIf="!track"></xm-spinner>
 <div class="container mb-5">
+  <div class="row">
+    <div class="col-12 text-center">
+      <ng-adsense [height]="200"></ng-adsense>
+    </div>
+  </div>
   <div class="row justify-content-center" *ngIf="track">
     <div class="col-sm-12 col-md-6 col-sm-8">
       <div class="card mb-3">
@@ -90,5 +94,7 @@
       </div>
     </div>
   </div>
+  <div class="row">
+    <div class="col-12 text-center"><ng-adsense></ng-adsense></div>
+  </div>
 </div>
-<div class="text-center"><ng-adsense></ng-adsense></div>
