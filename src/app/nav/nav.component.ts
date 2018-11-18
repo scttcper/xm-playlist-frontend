@@ -26,7 +26,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
           Helvetica Neue, Fira Sans, sans-serif;
       }
       .navbar-brand:hover {
-        color: #0c1e29;
+        color: #58fff2;
       }
     `
   ]
