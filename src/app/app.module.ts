@@ -8,7 +8,6 @@ import { ChartjsModule } from '@ctrl/ngx-chartjs';
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { Angulartics2Module } from 'angulartics2';
 import { AdsenseModule } from 'ng2-adsense';
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import { Api } from './api';
 import { AppComponent } from './app.component';
@@ -20,11 +19,11 @@ import { NavComponent } from './nav/nav.component';
 import { NewestComponent } from './newest/newest.component';
 import { PopularComponent } from './popular/popular.component';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { SpotifyComponent } from './spotify.component';
 import { StationComponent } from './station/station.component';
 import { StreamComponent } from './stream/stream.component';
 import { TrackComponent } from './track/track.component';
 import { XmUtility } from './util';
-import { SpotifyComponent } from './spotify.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -69,7 +68,6 @@ export const routes: Routes = [
     RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' }),
 
     ChartjsModule,
-    InfiniteScrollModule,
     NgbCollapseModule,
     Angulartics2Module.forRoot(),
     AdsenseModule.forRoot({

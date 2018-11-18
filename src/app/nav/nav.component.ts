@@ -19,6 +19,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
         background: #33485a;
       }
       .navbar-brand {
+        font-weight: 600;
         transition: all 0.2s ease-in;
         color: #fff;
         font-family: 'Open Sans', system-ui, -apple-system, BlinkMacSystemFont,
@@ -26,7 +27,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
           Helvetica Neue, Fira Sans, sans-serif;
       }
       .navbar-brand:hover {
-        color: #58fff2;
+        color: yellow;
       }
     `
   ]

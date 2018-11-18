@@ -31,7 +31,6 @@
     "date-fns": "2.0.0-alpha.16",
     "lodash-es": "4.17.11",
     "ng2-adsense": "^5.3.4",
-    "ngx-infinite-scroll": "6.0.1",
     "rxjs": "6.3.3",
     "spinthatshit": "1.0.4",
     "zone.js": "0.8.26"

@@ -1,34 +1,52 @@
-<div class="mb-3 text-center"><ng-adsense></ng-adsense></div>
 <div class="container mb-3">
-  <div class="row" infinite-scroll (scrolled)="onScroll()">
-    <ng-template ngFor let-stream [ngForOf]="streams">
-      <div class="col-sm-6 col-lg-4 col-xl-3" *ngFor="let play of stream; trackBy: trackById" style="margin-bottom:30px">
-        <div class="card h-100">
-          <xm-coverart [spotify]="play.track.spotify"></xm-coverart>
-          <div class="card-body">
-            <p class="card-text">
-              <small class="text-muted">
-                <xm-time-since [date]="play.startTime"></xm-time-since>
-              </small>
-            </p>
-            <h5 class="card-title">{{ play.track.name }}</h5>
-            <a [routerLink]="['artist', artist.id]" class="mr-2" *ngFor="let artist of play.track.artists; trackBy: trackById">
-              {{ artist.name }}
-            </a>
-          </div>
-          <div>
-            <xm-links class="text-center" [name]="play.track.name"
-              [artists]="play.track.artists" [spotify]="play.track.spotify"
-              [trackId]="play.track.id">
-            </xm-links>
-          </div>
+  <div class="row">
+    <div class="col-12 text-center" style="max-height: 200px">
+      <ng-adsense></ng-adsense>
+    </div>
+    <div class="col-12"><h3>Recently Played</h3></div>
+    <div
+      class="col-6 col-lg-4 col-xl-3 mb-3"
+      *ngFor="let play of plays; trackBy: trackById"
+    >
+      <div class="card h-100">
+        <xm-coverart [spotify]="play.track.spotify"></xm-coverart>
+        <div class="card-body">
+          <p class="card-text">
+            <small class="text-muted">
+              <xm-time-since [date]="play.startTime"></xm-time-since>
+            </small>
+          </p>
+          <h5 class="card-title">{{ play.track.name }}</h5>
+          <a
+            [routerLink]="['artist', artist.id]"
+            class="mr-2"
+            *ngFor="let artist of play.track.artists; trackBy: trackById"
+          >
+            {{ artist.name }}
+          </a>
+        </div>
+        <div>
+          <xm-links
+            class="text-center"
+            [name]="play.track.name"
+            [artists]="play.track.artists"
+            [spotify]="play.track.spotify"
+            [trackId]="play.track.id"
+          >
+          </xm-links>
         </div>
       </div>
-    </ng-template>
+    </div>
   </div>
   <div class="row">
-    <div class="col-12 mt-3 mb-5">
-      <xm-spinner *ngIf="loading"></xm-spinner>
+    <div class="col-12 text-center">
+      <button (click)="onScroll()" class="btn btn-lg btn-primary">More</button>
     </div>
+  </div>
+  <div class="row" *ngIf="loading">
+    <div class="col-12 mt-3 mb-5"><xm-spinner></xm-spinner></div>
+  </div>
+  <div class="row">
+    <div class="col-12 text-center"><ng-adsense></ng-adsense></div>
   </div>
 </div>

@@ -2,8 +2,8 @@
 <xm-spinner *ngIf="!track"></xm-spinner>
 <div class="container mb-5">
   <div class="row justify-content-center" *ngIf="track">
-    <div class="col-sm-12 col-md-8 col-lg-6">
-      <div class="card mb-4">
+    <div class="col-sm-12 col-md-6 col-sm-8">
+      <div class="card mb-3">
         <xm-coverart [spotify]="track.spotify"></xm-coverart>
         <div class="card-body">
           <h4 class="card-title">{{ track.name }}</h4>
@@ -31,13 +31,13 @@
         </ul>
       </div>
     </div>
-    <div class="col-sm-12 col-md-8 col-lg-6">
-      <div class="card mb-4 p-0" *ngIf="spotify && spotify.spotifyId">
+    <div class="col-sm-12 col-md-6 col-sm-8">
+      <div class="card mb-3 p-0" *ngIf="spotify && spotify.spotifyId">
         <div class="card-body p-2 text-center" style="line-height: 0px;">
           <spotify-iframe [track]="spotify.spotifyId"> </spotify-iframe>
         </div>
       </div>
-      <div class="card mb-4">
+      <div class="card mb-3">
         <div class="card-body text-center">
           <h4 class="card-title mb-1">Links</h4>
           <!--
@@ -71,7 +71,7 @@
           -->
         </ul>
       </div>
-      <div class="card mb-4">
+      <div class="card mb-3">
         <div class="card-body text-center">
           <h4 class="card-title mb-1">Activity</h4>
           <p class="card-text">

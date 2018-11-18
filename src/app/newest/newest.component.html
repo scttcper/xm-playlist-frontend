@@ -1,16 +1,10 @@
-<div class="mb-3 text-center"><ng-adsense></ng-adsense></div>
 <div class="container">
   <div class="row">
-    <div class="col-12 mb-3">
-      <h5 class="text-center">
-        Newest
-      </h5>
+    <div class="col-12 text-center">
+      <ng-adsense [height]="200"></ng-adsense>
     </div>
-  </div>
-</div>
-<div class="container">
-  <div class="row">
     <div class="col-12">
+      <h3>Newest</h3>
       <table class="table table-responsive-md">
         <thead>
           <tr>
@@ -22,9 +16,7 @@
         </thead>
         <tbody class="text-center" *ngIf="!tracks">
           <tr>
-            <td colspan="4">
-              <xm-spinner></xm-spinner>
-            </td>
+            <td colspan="4"><xm-spinner></xm-spinner></td>
           </tr>
         </tbody>
         <tbody>
@@ -33,7 +25,11 @@
               <a [routerLink]="['../track', track.id]">{{ track.name }}</a>
             </td>
             <td>
-              <a [routerLink]="['../artist', artist.id]" class="mr-2" *ngFor="let artist of track.artists">
+              <a
+                [routerLink]="['../artist', artist.id]"
+                class="mr-2"
+                *ngFor="let artist of track.artists"
+              >
                 {{ artist.name }}
               </a>
             </td>
@@ -44,7 +40,7 @@
       </table>
     </div>
   </div>
-</div>
-<div class="text-center">
-  <ng-adsense></ng-adsense>
+  <div class="row">
+    <div class="col-12 text-center"><ng-adsense></ng-adsense></div>
+  </div>
 </div>
