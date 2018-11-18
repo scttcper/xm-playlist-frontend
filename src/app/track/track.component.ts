@@ -48,7 +48,7 @@ export class TrackComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
-      this.setup(+params.trackId);
+      this.setup(params.trackId);
     });
   }
   setup(id: number) {

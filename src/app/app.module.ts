@@ -24,6 +24,7 @@ import { StationComponent } from './station/station.component';
 import { StreamComponent } from './stream/stream.component';
 import { TrackComponent } from './track/track.component';
 import { XmUtility } from './util';
+import { SpotifyComponent } from './spotify.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -59,6 +60,7 @@ export const routes: Routes = [
     NewestComponent,
     PopularComponent,
     SpinnerComponent,
+    SpotifyComponent,
   ],
   imports: [
     BrowserModule,

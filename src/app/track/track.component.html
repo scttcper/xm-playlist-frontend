@@ -7,18 +7,24 @@
         <xm-coverart [spotify]="track.spotify"></xm-coverart>
         <div class="card-body">
           <h4 class="card-title">{{ track.name }}</h4>
-          <a [routerLink]="['../../artist', artist.id]" class="card-link" *ngFor="let artist of track.artists">
+          <a
+            [routerLink]="['../../artist', artist.id]"
+            class="card-link"
+            *ngFor="let artist of track.artists"
+          >
             {{ artist.name }}
           </a>
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">
-            <p class="m-0">First Heard -
+            <p class="m-0">
+              First Heard -
               <xm-time-since [date]="track.createdAt"></xm-time-since>
             </p>
           </li>
           <li class="list-group-item">
-            <p class="m-0">Last Heard -
+            <p class="m-0">
+              Last Heard -
               <xm-time-since [date]="track.updatedAt"></xm-time-since>
             </p>
           </li>
@@ -26,47 +32,63 @@
       </div>
     </div>
     <div class="col-sm-12 col-md-8 col-lg-6">
+      <div class="card mb-4 p-0" *ngIf="spotify && spotify.spotifyId">
+        <div class="card-body p-2 text-center" style="line-height: 0px;">
+          <spotify-iframe [track]="spotify.spotifyId"> </spotify-iframe>
+        </div>
+      </div>
       <div class="card mb-4">
         <div class="card-body text-center">
           <h4 class="card-title mb-1">Links</h4>
-          <!-- <p class="card-text"><small class="text-muted">Last 30 Days</small></p> -->
+          <!--
+            <p class="card-text"><small class="text-muted">Last 30 Days</small></p>
+          -->
         </div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">
+          <li class="list-group-item" *ngIf="spotify && spotify.spotifyId">
             <p class="mb-0">
-              <i class="fab fa-spotify"></i> Spotify - <a [href]="spotifyLink">{{ spotify?.spotifyId }}</a>
+              <i class="fab fa-spotify"></i> Spotify -
+              <a [href]="spotifyLink">{{ spotify.spotifyId }}</a>
             </p>
           </li>
           <li class="list-group-item">
             <p class="mb-0">
-              <i class="fab fa-youtube"></i> YouTube - <a [href]="youtubeLink">Search</a>
+              <i class="fab fa-youtube"></i> YouTube -
+              <a [href]="youtubeLink">Search</a>
             </p>
           </li>
-          <!-- <li class="list-group-item">
-            <p class="mb-0">
-              <i class="fab fa-apple" aria-hidden="true"></i> iTunes:
-            </p>
-          </li>
-          <li class="list-group-item">
-            <p class="mb-0">
-              <i class="fab fa-amazon" aria-hidden="true"></i> Amazon:
-            </p>
-          </li> -->
+          <!--
+            <li class="list-group-item">
+              <p class="mb-0">
+                <i class="fab fa-apple" aria-hidden="true"></i> iTunes:
+              </p>
+            </li>
+            <li class="list-group-item">
+              <p class="mb-0">
+                <i class="fab fa-amazon" aria-hidden="true"></i> Amazon:
+              </p>
+            </li>
+          -->
         </ul>
       </div>
       <div class="card mb-4">
         <div class="card-body text-center">
           <h4 class="card-title mb-1">Activity</h4>
-          <p class="card-text"><small class="text-muted">Last 30 Days</small></p>
+          <p class="card-text">
+            <small class="text-muted">Last 30 Days</small>
+          </p>
         </div>
         <xm-spinner *ngIf="!data.labels"></xm-spinner>
         <div class="card-body p-0 text-center" *ngIf="data.labels">
-          <ngx-chartjs type="bar" [data]="data" height="250" [options]="options"></ngx-chartjs>
+          <ngx-chartjs
+            type="bar"
+            [data]="data"
+            height="250"
+            [options]="options"
+          ></ngx-chartjs>
         </div>
       </div>
     </div>
   </div>
 </div>
-<div class="text-center">
-  <ng-adsense></ng-adsense>
-</div>
+<div class="text-center"><ng-adsense></ng-adsense></div>

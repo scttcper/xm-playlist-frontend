@@ -84,9 +84,3 @@ body {
   background-color: #f8fafc;
 }
 
-@include media-breakpoint-down(sm) {
-  .container {
-    padding-right: 6px;
-    padding-left: 6px;
-  }
-}
