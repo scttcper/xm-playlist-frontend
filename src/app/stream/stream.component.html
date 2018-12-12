@@ -40,7 +40,7 @@
   </div>
   <div class="row">
     <div class="col-12 mb-3 text-center">
-      <button (click)="onScroll()" class="btn btn-lg btn-primary">More</button>
+      <button *ngIf="plays && plays.length" (click)="onScroll()" class="btn btn-lg btn-primary">Load More</button>
     </div>
   </div>
   <div class="row" *ngIf="loading">
