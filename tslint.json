@@ -70,7 +70,6 @@
         "variable-declaration": "nospace"
       }
     ],
-    "typeof-compare": true,
     "unified-signatures": true,
     "variable-name": false,
     "whitespace": [
@@ -94,7 +93,6 @@
     "use-pipe-transform-interface": true,
     "component-class-suffix": false,
     "directive-class-suffix": true,
-    "no-unused-variable": true,
     "ordered-imports": [
       true,
       {
