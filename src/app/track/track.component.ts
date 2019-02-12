@@ -58,7 +58,7 @@ export class TrackComponent implements OnInit {
     this.youtubeLink = '';
     this.api.getTrack(id).subscribe(track => {
       this.track = track;
-      const content = `${track.name} by ${track.artists[0] || ''}`;
+      const content = `${track.name} by ${(track.artists[0] && track.artists[0].name) || ''}`;
       this.title.setTitle(content);
       this.meta.addTags([
         { property: 'og:title', content },
