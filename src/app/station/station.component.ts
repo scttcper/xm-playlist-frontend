@@ -11,7 +11,7 @@ import { channels, Channel } from '../channels';
     <xm-nav></xm-nav>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-3">
       <div class="container">
-        <a class="navbar-brand" routerLink="./">{{ channel?.name }}</a>
+        <a class="navbar-brand ml-1" routerLink="./">{{ channel?.name }}</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -76,10 +76,6 @@ import { channels, Channel } from '../channels';
   `,
   styles: [
     `
-      .container {
-        padding-right: 15px;
-        padding-left: 15px;
-      }
     `,
   ],
 })
