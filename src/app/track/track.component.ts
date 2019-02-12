@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser';
+import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, Params } from '@angular/router';
 
 import { format } from 'date-fns';
@@ -44,6 +44,7 @@ export class TrackComponent implements OnInit {
     private api: Api,
     private route: ActivatedRoute,
     private title: Title,
+    private meta: Meta,
   ) {}
 
   ngOnInit() {
@@ -57,7 +58,13 @@ export class TrackComponent implements OnInit {
     this.youtubeLink = '';
     this.api.getTrack(id).subscribe(track => {
       this.track = track;
-      this.title.setTitle(`${track.name}`);
+      const content = `${track.name} by ${track.artists[0] || ''}`;
+      this.title.setTitle(content);
+      this.meta.addTags([
+        { property: 'og:title', content },
+        { property: 'og:description', content: 'Recently played on xm radio' },
+        { property: 'og:site_name', content: 'xmplaylist' },
+      ]);
       if (track.playsByDay) {
         this.setupActivity(track.playsByDay);
       } else {
@@ -70,6 +77,17 @@ export class TrackComponent implements OnInit {
         artists.join('+').replace(/[\s\/()]/g, '+');
       this.youtubeLink = `https://www.youtube.com/results?search_query=${str}`;
       if (track.spotify) {
+        if (track.spotify.cover) {
+          this.meta.addTag({
+            property: 'og:image',
+            content: track.spotify.cover,
+          });
+          this.meta.addTag({
+            property: 'og:image:alt',
+            content,
+          });
+        }
+
         this.spotify = track.spotify;
         this.spotifyLink = `https://open.spotify.com/track/${
           track.spotify.spotifyId
