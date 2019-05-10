@@ -23,7 +23,7 @@ export class PopularComponent implements OnInit {
 
   ngOnInit() {
     this.route.parent.params.subscribe((params) => {
-      this.api.getPopular(params['channelName'])
+      this.api.getPopular(params.channelName)
         .subscribe((tracks) => this.tracks = tracks);
     });
   }

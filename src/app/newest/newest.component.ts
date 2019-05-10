@@ -24,7 +24,7 @@ export class NewestComponent implements OnInit {
 
   ngOnInit() {
     this.route.parent.params.subscribe((params) => {
-      this.api.getNewest(params['channelName'])
+      this.api.getNewest(params.channelName)
         .subscribe((tracks) => this.tracks = tracks);
     });
   }

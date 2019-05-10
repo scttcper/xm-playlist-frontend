@@ -24,7 +24,7 @@ export class Api {
       params = params.set('last', String(new Date(last.startTime).getTime()));
     }
     return this.http
-      .get<Play[]>(`${this.url}/channel/${channelName}`, { params: params })
+      .get<Play[]>(`${this.url}/channel/${channelName}`, { params })
       .pipe(
         catchError(this.handleError),
         map(res =>

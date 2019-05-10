@@ -4,11 +4,11 @@
   "newProjectRoot": "projects",
   "projects": {
     "xm-playlist-frontend": {
+      "projectType": "application",
+      "schematics": {},
       "root": "",
       "sourceRoot": "src",
-      "projectType": "application",
       "prefix": "app",
-      "schematics": {},
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -17,7 +17,7 @@
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
-            "tsConfig": "src/tsconfig.app.json",
+            "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
               "src/assets",
@@ -52,7 +52,14 @@
               "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
-              "buildOptimizer": true
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
             }
           }
         },
@@ -80,9 +87,8 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "format": "stylish",
-            "typeCheck": true,
             "tsConfig": [
-              "src/tsconfig.app.json"
+              "tsconfig.app.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -90,7 +96,6 @@
           }
         }
       }
-    }
-  },
+    }},
   "defaultProject": "xm-playlist-frontend"
 }

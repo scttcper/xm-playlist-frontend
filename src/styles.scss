@@ -50,10 +50,10 @@ $enable-responsive-font-sizes: true;
 @import '~bootstrap/scss/utilities';
 @import '~bootstrap/scss/print';
 
-$fa-font-path: '../node_modules/@fortawesome/fontawesome-free-webfonts/webfonts';
-@import '~@fortawesome/fontawesome-free-webfonts/scss/fontawesome';
+$fa-font-path: '../node_modules/@fortawesome/fontawesome-free/webfonts';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
-@import '~@fortawesome/fontawesome-free-webfonts/scss/_variables';
+@import '~@fortawesome/fontawesome-free/scss/_variables';
 
 @font-face {
   font-family: 'Font Awesome 5 Free';

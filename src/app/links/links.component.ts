@@ -62,7 +62,7 @@ export class LinksComponent implements OnInit {
   constructor(private router: ActivatedRoute) {}
 
   ngOnInit() {
-    this.router.parent.params.subscribe(n => (this.channel = n['channelName']));
+    this.router.parent.params.subscribe(n => (this.channel = n.channelName));
     const artists = this.artists.map(n => n.name);
     const str =
       this.name.replace(/[\s\/()]/g, '+') +

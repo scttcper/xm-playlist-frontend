@@ -41,8 +41,8 @@ export class StreamComponent implements OnInit {
       // get segment id from route
       this.end = false;
       this.plays = [];
-      this.getRecentPage(params['channelName']);
-      const chan = channels.find(matchesProperty('id', params['channelName']));
+      this.getRecentPage(params.channelName);
+      const chan = channels.find(matchesProperty('id', params.channelName));
       this.channel = chan;
       this.title.setTitle(`${chan.name} recently played - xmplaylist.com`);
       this.meta.updateTag({

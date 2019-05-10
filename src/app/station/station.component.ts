@@ -89,7 +89,7 @@ export class StationComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.channel = channels.find(
-        matchesProperty('id', params['channelName']),
+        matchesProperty('id', params.channelName),
       );
       this.spotifyLink = `https://open.spotify.com/user/xmplaylist/playlist/${
         this.channel.playlist

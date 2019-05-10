@@ -25,14 +25,14 @@ export class ArtistComponent implements OnInit {
 
   ngOnInit() {
     this.route.parent.params.subscribe((params) => {
-      this.channel = channels.find(matchesProperty('id', params['channelName']));
+      this.channel = channels.find(matchesProperty('id', params.channelName));
     });
     this.route.params.subscribe(() => this.refresh());
   }
   refresh() {
     this.api.getArtist(
-      this.route.parent.snapshot.params['channelName'],
-      this.route.snapshot.params['id'],
+      this.route.parent.snapshot.params.channelName,
+      this.route.snapshot.params.id,
     ).subscribe((res) => {
       this.tracks = res.tracks;
       this.artist = res.artist;
