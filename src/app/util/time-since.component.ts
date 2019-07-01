@@ -21,7 +21,7 @@ export class TimeSinceComponent implements OnDestroy, OnChanges {
   }
   timeoutSetup() {
     let next;
-    if (this.timeSince.indexOf('minute') !== -1) {
+    if (this.timeSince.includes('minute')) {
       next = 10000;
     } else {
       next = 100000;
@@ -30,7 +30,7 @@ export class TimeSinceComponent implements OnDestroy, OnChanges {
   }
   format() {
     const res = formatDistance(new Date(), this.past);
-    if (res.indexOf('ms') !== -1 || res.indexOf('second') !== -1) {
+    if (res.includes('ms') || res.includes('second')) {
       this.timeSince = '1 minute';
     } else {
       this.timeSince = res;
