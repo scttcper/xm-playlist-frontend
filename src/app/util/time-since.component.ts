@@ -35,7 +35,7 @@ export class TimeSinceComponent implements OnDestroy, OnChanges {
     } else {
       this.timeSince = res;
     }
-    if (differenceInDays(new Date(), this.date) < 1) {
+    if (differenceInDays(new Date(), new Date(this.date)) < 1) {
       this.timeoutSetup();
     }
   }
