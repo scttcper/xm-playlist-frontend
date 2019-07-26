@@ -1,3 +1,4 @@
+// tslint:disable:comment-format
 // https://www.siriusxm.com/albumart/Live/Default/DefaultMDS_m_52.jpg
 export interface Channel {
   id: string;
@@ -299,7 +300,7 @@ export const channels: Channel[] = [
   {
     id: 'faction',
     number: 41,
-    name: 'Faction',
+    name: 'Faction Punk',
     genre: 'Rock',
     desc: 'Punk & Beats w/ Jason Ellis XL',
     playlist: '3HRoF7JJ3UcyRoc49eGNpZ',
@@ -315,7 +316,7 @@ export const channels: Channel[] = [
   {
     id: '9471',
     number: 43,
-    name: 'LL COOL J\'s Rock The Bells Radio',
+    name: 'Rock The Bells Radio',
     genre: 'Hip-Hop',
     desc: 'Classic Hip-Hop-XL',
     playlist: '6dJf2NJOX1l0mWoXFf1Hki',
@@ -502,7 +503,7 @@ export const channels: Channel[] = [
     id: 'purejazz',
     number: 67,
     name: 'Real Jazz',
-    genre: 'Jazz',
+    genre: 'Jazz/Standards',
     desc: 'Classic Jazz',
     playlist: '3mDuSPlntj533CvZXvMnDS',
   },
@@ -620,13 +621,14 @@ export const channels: Channel[] = [
   //   genre: 'Rock',
   //   desc: 'Rock & Roll Jukebox Songs',
   // },
-  // {
-  //   id: '9413',
-  //   number: 314,
-  //   name: 'SiriusXM Turbo',
-  //   genre: 'Rock',
-  //   desc: "Hard Rock from the '90s/2000s",
-  // },
+  {
+    id: '9413',
+    number: 314,
+    name: 'SiriusXM Turbo',
+    genre: 'Rock',
+    desc: 'Hard Rock from the \'90s/2000s',
+    playlist: '2rXLvsVeVTcpZrbesfRxFw',
+  },
   // {
   //   id: '9176',
   //   number: 316,
