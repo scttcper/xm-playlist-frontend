@@ -25,7 +25,7 @@ import { Spotify } from '../app.interfaces';
     </a>
     <a [href]="songwhipLink" *ngIf="songwhipLink" target="_blank"
       class="btn btn-default songwhip mr-1" role="button">
-      <i class="fa fa-play-circle"></i>
+      <i class="fa fa-music"></i>
     </a>
   </div>
   `,
