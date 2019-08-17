@@ -16,6 +16,7 @@ export class TrackComponent implements OnInit {
   playsByDay: number[];
   spotify: Spotify;
   spotifyLink = '';
+  songwhipLink = '';
   youtubeLink = '';
 
   data: any = {};
@@ -92,6 +93,7 @@ export class TrackComponent implements OnInit {
         this.spotifyLink = `https://open.spotify.com/track/${
           track.spotify.spotifyId
         }`;
+        this.songwhipLink = `https://songwhip.com/convert?url=${encodeURIComponent(this.spotifyLink)}`;
       }
     });
   }

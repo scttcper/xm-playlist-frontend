@@ -15,13 +15,17 @@ import { Spotify } from '../app.interfaces';
     <a [href]="hypem" target="_blank" class="btn btn-default hypem" role="button">
       <i class="fa fa-heart"></i>
     </a>
-    -->
     <a [href]="youtube" target="_blank" class="btn btn-default youtube mr-1" role="button">
       <i class="fab fa-youtube"></i>
     </a>
+    -->
     <a [href]="spotifyLink" *ngIf="spotifyLink" target="_blank"
       class="btn btn-default spotify mr-1" role="button">
       <i class="fab fa-spotify"></i>
+    </a>
+    <a [href]="songwhipLink" *ngIf="songwhipLink" target="_blank"
+      class="btn btn-default songwhip mr-1" role="button">
+      <i class="fa fa-play-circle"></i>
     </a>
   </div>
   `,
@@ -45,6 +49,9 @@ import { Spotify } from '../app.interfaces';
   .spotify:hover {
     background-color: #1ED760;
   }
+  .songwhip:hover {
+    background-color: #F13383;
+  }
   `,
   ],
 })
@@ -54,6 +61,7 @@ export class LinksComponent implements OnInit {
   @Input() artists: any[];
   @Input() hideTrack: boolean;
   @Input() spotify: Spotify;
+  @Input() songwhipLink: string;
   youtube = '';
   hypem = '';
   spotifyLink = '';
@@ -72,6 +80,7 @@ export class LinksComponent implements OnInit {
     this.youtube = `https://www.youtube.com/results?search_query=${str}`;
     if (this.spotify) {
       this.spotifyLink = `https://open.spotify.com/track/${this.spotify.spotifyId}`;
+      this.songwhipLink = `https://songwhip.com/convert?url=${encodeURIComponent(this.spotifyLink)}`;
     }
   }
 }
